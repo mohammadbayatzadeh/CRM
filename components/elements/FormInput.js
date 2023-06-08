@@ -7,7 +7,7 @@ function FormInput({ name, type, value, label, onchange }) {
       <input
         value={value}
         type={type}
-        onchange={onchange}
+        onChange={onchange}
         name={name}
         id={name}
       />

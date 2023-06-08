@@ -19,7 +19,7 @@ function AddCostumerPage() {
   const cancelHandler = () => {
     setForm({
       firstName: "",
-      lastname: "",
+      lastName: "",
       email: "",
       phone: "",
       city: "",

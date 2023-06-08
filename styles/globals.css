@@ -1,5 +1,6 @@
 html,
-body {
+body,
+button {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",

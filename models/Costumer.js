@@ -19,7 +19,7 @@ const costumerSchema = new Schema({
   phone: String,
   city: String,
   products: {
-    type: [String],
+    type: [Object],
     default: [],
   },
   createdAt: {
