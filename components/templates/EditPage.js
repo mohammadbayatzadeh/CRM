@@ -1,20 +1,23 @@
-import { useState } from "react";
-import Form from "../modules/Form";
-import styles from "./AddCostumerPage.module.css";
-import { useRouter } from "next/router";
+import Form from "@/components/modules/Form";
 import axios from "axios";
+import { useRouter } from "next/router";
+import React from "react";
+import styles from "./EditPage.module.css";
 
-function AddCostumerPage() {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    city: "",
-    products: [],
-  });
+function EditPage() {
+  const [form, setForm] = React.useState({});
 
   const router = useRouter();
+
+  const { costumerID } = router.query;
+
+  React.useEffect(() => {
+    costumerID &&
+      axios
+        .get(`/api/costumer/${costumerID}`)
+        .then((res) => setForm(res.data.data))
+        .catch((err) => console.log(err.response.data));
+  }, []);
 
   const cancelHandler = () => {
     setForm({
@@ -29,8 +32,9 @@ function AddCostumerPage() {
   };
 
   const saveHandler = async () => {
+    console.log(form);
     await axios
-      .post("/api/costumer", { data: form })
+      .patch(`/api/costumer/${costumerID}`, { data: form })
       .then((res) => {
         router.push("/");
         console.log(res.data);
@@ -42,8 +46,8 @@ function AddCostumerPage() {
 
   return (
     <div className={styles.container}>
-      <h4>Add Costumer</h4>
-      <Form form={form} setForm={setForm} />
+      <h3>Edit Form</h3>
+      {form && <Form form={form} setForm={setForm} />}
       <div className={styles.buttons}>
         <button onClick={cancelHandler} className={styles.cancel}>
           Cancel
@@ -56,4 +60,4 @@ function AddCostumerPage() {
   );
 }
 
-export default AddCostumerPage;
+export default EditPage;

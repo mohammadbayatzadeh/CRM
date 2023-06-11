@@ -7,6 +7,7 @@ function Form({ form, setForm }) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
+
   return (
     <div className={styles.container}>
       <FormInput
@@ -18,7 +19,7 @@ function Form({ form, setForm }) {
       />
       <FormInput
         name="lastName"
-        value={form.lastNaem}
+        value={form.lastName}
         type="text"
         label="last name"
         onchange={(e) => changeHanler(e)}

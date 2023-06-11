@@ -37,40 +37,42 @@ function FormItem({ form, setForm }) {
   return (
     <div className={styles.container}>
       <h3>purchased items</h3>
-      {products.map((product, index) => (
-        <div key={index} className={styles.productContainer}>
-          <FormInput
-            name="name"
-            type="text"
-            label="name"
-            value={product.name}
-            onchange={(e) => changeHandler(e, index)}
-          />
-          <div className={styles.row}>
+      {products &&
+        products.length > 0 &&
+        products.map((product, index) => (
+          <div key={index} className={styles.productContainer}>
             <FormInput
-              name="price"
+              name="name"
               type="text"
-              label="Price"
-              value={product.price}
+              label="name"
+              value={product.name}
               onchange={(e) => changeHandler(e, index)}
             />
-            <span className={styles.space}></span>
-            <FormInput
-              name="qty"
-              type="text"
-              label="qty"
-              value={product.qty}
-              onchange={(e) => changeHandler(e, index)}
-            />
+            <div className={styles.row}>
+              <FormInput
+                name="price"
+                type="text"
+                label="Price"
+                value={product.price}
+                onchange={(e) => changeHandler(e, index)}
+              />
+              <span className={styles.space}></span>
+              <FormInput
+                name="qty"
+                type="text"
+                label="qty"
+                value={product.qty}
+                onchange={(e) => changeHandler(e, index)}
+              />
+            </div>
+            <button
+              className={styles.remove}
+              onClick={() => removeHandler(index)}
+            >
+              remove item
+            </button>
           </div>
-          <button
-            className={styles.remove}
-            onClick={() => removeHandler(index)}
-          >
-            remove item
-          </button>
-        </div>
-      ))}
+        ))}
       <button className={styles.add} onClick={() => addHandler()}>
         Add item
       </button>
