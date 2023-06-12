@@ -29,15 +29,20 @@ function AddCostumerPage() {
   };
 
   const saveHandler = async () => {
-    await axios
-      .post("/api/costumer", { data: form })
-      .then((res) => {
-        router.push("/");
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+    form.firstName &&
+      form.lastName &&
+      form.email &&
+      form.products[0] &&
+      form.products[0].name &&
+      (await axios
+        .post("/api/costumer", { data: form })
+        .then((res) => {
+          router.push("/");
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        }));
   };
 
   return (

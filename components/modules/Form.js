@@ -14,21 +14,21 @@ function Form({ form, setForm }) {
         name="firstName"
         value={form.firstName}
         type="text"
-        label="first name"
+        label="first name*"
         onchange={(e) => changeHanler(e)}
       />
       <FormInput
         name="lastName"
         value={form.lastName}
         type="text"
-        label="last name"
+        label="last name*"
         onchange={(e) => changeHanler(e)}
       />
       <FormInput
         name="email"
         value={form.email}
         type="text"
-        label="email"
+        label="email*"
         onchange={(e) => changeHanler(e)}
       />
       <FormInput

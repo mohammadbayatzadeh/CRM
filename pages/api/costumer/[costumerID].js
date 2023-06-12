@@ -13,7 +13,6 @@ export default async function handler(req, res) {
   }
   if (req.method === "GET") {
     try {
-      console.log(id);
       const costumer = await Costumer.findById(id);
       res.status(200).json({
         status: "success",
@@ -41,11 +40,12 @@ export default async function handler(req, res) {
     try {
       const costumer = await Costumer.findOneAndUpdate(
         { _id: id },
-        { ...data }
+        { ...data, updatedAt: Date.now() }
       );
       res.status(200).json({
         status: "success",
         message: "data updated in db",
+        data: costumer,
       });
     } catch (err) {
       res
