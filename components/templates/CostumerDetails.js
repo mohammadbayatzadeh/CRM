@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./CostumerDetails.module.css";
+import Link from "next/link";
 
 function CostumerDetails() {
-  const [form, setForm] = useState(null);
+  const [form, setForm] = React.useState(null);
   const router = useRouter();
   const { costumerID } = router.query;
 
@@ -15,6 +16,16 @@ function CostumerDetails() {
         .then((res) => setForm(res.data.data))
         .catch((err) => console.log(err.response.data));
   }, []);
+
+  const deleteHandler = async () => {
+    await axios
+      .delete(`/api/costumer/${costumerID}`)
+      .then((res) => {
+        router.push("/");
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   if (form)
     return (
@@ -35,13 +46,17 @@ function CostumerDetails() {
             <span>price</span>
             <span>qty</span>
           </div>
-          {form.products.map((product) => (
-            <div className={styles.row}>
+          {form.products.map((product, index) => (
+            <div className={styles.row} key={index}>
               <span>{product.name}</span>
               <span>{product.price}</span>
               <span>{product.qty}</span>
             </div>
           ))}
+        </div>
+        <div className={styles.row}>
+          <button onClick={deleteHandler}>DELETE</button>
+          <Link href={`/edit/${costumerID}`}>EDIT</Link>
         </div>
       </div>
     );
