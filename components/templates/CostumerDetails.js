@@ -4,17 +4,13 @@ import React from "react";
 import styles from "./CostumerDetails.module.css";
 import Link from "next/link";
 
-function CostumerDetails() {
+function CostumerDetails({ data }) {
   const [form, setForm] = React.useState(null);
   const router = useRouter();
   const { costumerID } = router.query;
 
   React.useEffect(() => {
-    costumerID &&
-      axios
-        .get(`/api/costumer/${costumerID}`)
-        .then((res) => setForm(res.data.data))
-        .catch((err) => console.log(err.response.data));
+    setForm(data);
   }, []);
 
   const deleteHandler = async () => {

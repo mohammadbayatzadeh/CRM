@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import styles from "./EditPage.module.css";
 
-function EditPage() {
+function EditPage({data}) {
   const [form, setForm] = React.useState({});
 
   const router = useRouter();
@@ -12,11 +12,7 @@ function EditPage() {
   const { costumerID } = router.query;
 
   React.useEffect(() => {
-    costumerID &&
-      axios
-        .get(`/api/costumer/${costumerID}`)
-        .then((res) => setForm(res.data.data))
-        .catch((err) => console.log(err.response.data));
+    setForm(data)
   }, []);
 
   const cancelHandler = () => {
