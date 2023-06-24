@@ -1,6 +1,7 @@
 .container {
   width: 100%;
-  border: 2px solid white;
+  border-width: 2px;
+  border-style: solid;
   padding: 10px;
   border-radius: 7px;
   display: flex;
@@ -12,7 +13,8 @@
 .productContainer {
   width: 100%;
   margin-top: 20px;
-  border: 2px solid #fff;
+  border-width: 2px;
+  border-style: solid;
   padding: 10px;
   border-radius: 7px;
 }

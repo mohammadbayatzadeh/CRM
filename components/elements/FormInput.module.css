@@ -10,11 +10,11 @@
 .container input {
   width: 100%;
   padding: 10px;
-  color: white;
   font-size: 1em;
   background: none;
   outline: none;
   border-radius: 7px;
-  border: 2px solid white;
+  border-width: 2px;
+  border-style: solid;
   margin: 7px 0;
 }
