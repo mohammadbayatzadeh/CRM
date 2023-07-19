@@ -1,4 +1,4 @@
-import Costumer from "@/models/Costumer";
+import Costumer from "@/models/Manager";
 import connectDB from "@/utils/connectDB";
 
 export default async function handler(req, res) {

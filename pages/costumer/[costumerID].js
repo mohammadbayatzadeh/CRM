@@ -1,5 +1,5 @@
 import CostumerDetails from "@/components/templates/CostumerDetails";
-import Costumer from "@/models/Costumer";
+import Costumer from "@/models/Manager";
 import Head from "next/head";
 function CostumerDetail({ data }) {
   const costumerData = JSON.parse(data);

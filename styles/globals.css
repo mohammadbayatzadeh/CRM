@@ -29,6 +29,9 @@ a {
   border-color: white !important;
   color: white;
 }
+#dark button {
+  color: white;
+}
 
 #light {
   background-color: white !important;
@@ -39,5 +42,8 @@ a {
 
 #light input {
   border-color: black !important;
+  color: black;
+}
+#light button {
   color: black;
 }

@@ -2,12 +2,7 @@ import React from "react";
 
 function Moon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width={20}
-      height={20}
-      >
-        
+    <svg viewBox="0 0 24 24" width={20} height={20}>
       <g>
         <path
           stroke="none"

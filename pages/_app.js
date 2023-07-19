@@ -3,10 +3,12 @@ import { store } from "@/components/redux/store";
 import "@/styles/globals.css";
 import Head from "next/head";
 import { Provider } from "react-redux";
+import { ToastContainer } from "react-toastify";
 
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <ToastContainer />
       <Layout>
         <Head>
           <title>CRM panel</title>

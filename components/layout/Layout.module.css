@@ -21,11 +21,15 @@
 .logo {
   font-size: 2em;
 }
-.icon{
+.icon {
   margin-right: auto;
 }
 .button {
+  font-size: .8em;
+  outline: none;
+  border: none;
   padding: 7px;
+  margin-left: 5px;
   background-color: #0f6292;
   border-radius: 7px;
   cursor: pointer;

@@ -1,5 +1,5 @@
 import EditPage from "@/components/templates/EditPage";
-import Costumer from "@/models/Costumer";
+import Costumer from "@/models/Manager";
 import Head from "next/head";
 
 function edit({ data }) {

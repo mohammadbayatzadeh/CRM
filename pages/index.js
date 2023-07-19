@@ -1,5 +1,5 @@
 import HomePage from "@/components/templates/HomePage";
-import Costumer from "@/models/Costumer";
+import Costumer from "@/models/Manager";
 import connectDB from "@/utils/connectDB";
 import React from "react";
 
@@ -12,6 +12,7 @@ export default Home;
 export async function getServerSideProps() {
   try {
     await connectDB();
+
     const costumers = await Costumer.find();
     return {
       props: {
