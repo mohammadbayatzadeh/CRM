@@ -2,7 +2,15 @@
 import { verifyToken } from "@/utils/functions";
 
 function Home() {
-  return <h2>Welcome to CRM Panel</h2>;
+  return (
+    <>
+      <h2>Welcome to CRM Panel</h2>
+      <br />
+      <h3>
+        to manage your costumers, please register or login to your account.
+      </h3>
+    </>
+  );
 }
 
 export default Home;

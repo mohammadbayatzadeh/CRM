@@ -44,7 +44,7 @@ function Layout({ children }) {
   };
 
   return (
-    <div id={[theme]}>
+    <div id={[theme]} >
       <div className={styles.body}>
         <header className={styles.header}>
           <Link href="/" className={styles.logo}>
