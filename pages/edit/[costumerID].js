@@ -1,6 +1,11 @@
 import EditPage from "@/components/templates/EditPage";
-import Costumer from "@/models/Manager";
 import Head from "next/head";
+
+//models
+import Manager from "@/models/Manager";
+
+//functions
+import { verifyToken } from "@/utils/functions";
 
 function edit({ data }) {
   const costumerData = JSON.parse(data);
@@ -19,18 +24,21 @@ function edit({ data }) {
 export default edit;
 
 export async function getServerSideProps(context) {
-  try {
-    const { costumerID } = context.params;
-    const costumer = await Costumer.findById(costumerID);
-
+  const { jwtToken } = context.req.cookies;
+  const { costumerID } = context.params;
+  const result = verifyToken(jwtToken);
+  const manager = await Manager.findOne({ email: result.email });
+  const costumer = manager.costumers.filter((item) => item._id == costumerID);
+  if (!result) {
     return {
-      props: {
-        data: JSON.stringify(costumer),
+      redirect: {
+        destination: "/login",
       },
     };
-  } catch (err) {
-    return {
-      notFound: true,
-    };
   }
+  return {
+    props: {
+      data: JSON.stringify(costumer[0]),
+    },
+  };
 }

@@ -9,10 +9,10 @@ function Card({ firstName, lastName, email, _id }) {
     await axios
       .delete(`/api/costumer/${_id}`)
       .then((res) => {
-        console.log(res.data);
-        router.reload();
+        router.replace('/')
+        // router.reload();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {});
   };
 
   return (
@@ -24,7 +24,7 @@ function Card({ firstName, lastName, email, _id }) {
       <div className={styles.buttons}>
         <button onClick={deleteHandler}>DELETE</button>
         <Link href={`edit/${_id}`}>Edit</Link>
-        <Link href={`costumer/${_id}`} >Details</Link>
+        <Link href={`costumer/${_id}`}>Details</Link>
       </div>
     </div>
   );

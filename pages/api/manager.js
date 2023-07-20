@@ -13,7 +13,6 @@ export default async function handler(req, res) {
     }
 
     const { jwtToken } = req.cookies;
-    const secretKey = process.env.SECRET_KEY;
 
     if (!jwtToken) {
       return res
@@ -21,12 +20,10 @@ export default async function handler(req, res) {
         .json({ status: "failed", message: "you are not logged in" });
     }
 
-    const result = verifyToken(jwtToken, secretKey);
+    const result = verifyToken(jwtToken);
 
-    const manager = await Manager.findOne({ email: result.email });
-
-    if (result ) {
-      return res.status(200).json({ status: "success", data: manager });
+    if (result) {
+      return res.status(200).json({ status: "success", data: result.email });
     } else {
       return res
         .status(422)

@@ -4,10 +4,12 @@ import FormInput from "../elements/FormInput";
 import Link from "next/link";
 import axios from "axios";
 import { Toast } from "../elements/Toast";
+import { useRouter } from "next/router";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const saveHandler = async () => {
     axios
@@ -17,6 +19,7 @@ function RegisterPage() {
       })
       .then((res) => {
         Toast(`${res.data.message}`, "success");
+        router.push("/");
       })
       .catch((err) => {
         Toast(`${err.response.data.message}`, "error");

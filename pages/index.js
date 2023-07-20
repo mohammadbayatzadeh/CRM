@@ -1,7 +1,11 @@
 import HomePage from "@/components/templates/HomePage";
-import Costumer from "@/models/Manager";
+
+//model
+import Manager from "@/models/Manager";
+
+//functions
 import connectDB from "@/utils/connectDB";
-import React from "react";
+import { verifyToken } from "@/utils/functions";
 
 function Home({ costumers }) {
   return <HomePage costumers={costumers} />;
@@ -9,20 +13,22 @@ function Home({ costumers }) {
 
 export default Home;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { jwtToken } = context.req.cookies;
   try {
     await connectDB();
-
-    const costumers = await Costumer.find();
+    const result = verifyToken(jwtToken);
+    const manager = await Manager.findOne({ email: result.email });
     return {
       props: {
-        costumers: JSON.parse(JSON.stringify(costumers)),
+        costumers: JSON.parse(JSON.stringify(manager.costumers)),
       },
     };
   } catch (err) {
-    console.log(err);
     return {
-      notFound: true,
+      redirect: {
+        destination: "/landing",
+      },
     };
   }
 }

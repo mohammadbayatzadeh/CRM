@@ -1,9 +1,13 @@
 import Layout from "@/components/layout/Layout";
-import { store } from "@/components/redux/store";
-import "@/styles/globals.css";
-import Head from "next/head";
-import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
+import Head from "next/head";
+
+//redux
+import { store } from "@/components/redux/store";
+import { Provider } from "react-redux";
+
+//styles
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (

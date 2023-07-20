@@ -3,6 +3,7 @@ import Form from "../modules/Form";
 import styles from "./AddCostumerPage.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { Toast } from "../elements/Toast";
 
 function AddCostumerPage() {
   const [form, setForm] = useState({
@@ -37,12 +38,10 @@ function AddCostumerPage() {
       (await axios
         .post("/api/costumer", { data: form })
         .then((res) => {
+          Toast(`${form.firstName} createad`, "success");
           router.push("/");
-          console.log(res.data);
         })
-        .catch((err) => {
-          console.log(err.response);
-        }));
+        .catch((err) => {}));
   };
 
   return (

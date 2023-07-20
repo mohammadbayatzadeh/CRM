@@ -8,9 +8,11 @@ import Moon from "../icons/Moon";
 import Sun from "../icons/Sun";
 import axios from "axios";
 import { Toast } from "../elements/Toast";
+import { seperateName } from "@/utils/functions";
 
 function Layout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [name, setName] = useState("");
   const router = useRouter();
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme);
@@ -21,25 +23,23 @@ function Layout({ children }) {
 
   useEffect(() => {
     AuthHandler();
-  }, []);
+  }, [router.pathname]);
+
   const logOutHandler = () => {
     axios
       .get("/api/auth/logout")
       .then((res) => {
+        setName("");
         Toast(res.data.message, "success");
-        console.log(res.data);
         AuthHandler();
+        router.push("/login");
       })
-      .catch(
-        (err) => (
-          console.log(err.response), Toast(err.response.data.message, "error")
-        )
-      );
+      .catch((err) => Toast(err.response.data.message, "error"));
   };
   const AuthHandler = () => {
     axios
       .get("/api/manager")
-      .then((res) => setIsLoggedIn(true))
+      .then((res) => (setIsLoggedIn(true), setName(res.data.data)))
       .catch((err) => setIsLoggedIn(false));
   };
 
@@ -52,6 +52,7 @@ function Layout({ children }) {
           </Link>
           <div onClick={themeHandler} className={styles.icon}>
             {theme === "dark" ? <Sun /> : <Moon />}
+            {name && ` Welcome ${seperateName(name)}`}
           </div>
           {isLoggedIn ? (
             <>
@@ -66,7 +67,24 @@ function Layout({ children }) {
               </button>
             </>
           ) : (
-            <button className={styles.button} onClick={()=>router.replace('/login')}>login</button>
+            <>
+              {router.pathname === "/login" || (
+                <button
+                  className={styles.button}
+                  onClick={() => router.replace("/login")}
+                >
+                  login
+                </button>
+              )}
+              {router.pathname === "/register" || (
+                <button
+                  className={styles.button}
+                  onClick={() => router.replace("/register")}
+                >
+                  register
+                </button>
+              )}
+            </>
           )}
         </header>
         <div className={styles.container} id={[theme]}>

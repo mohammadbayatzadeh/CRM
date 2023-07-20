@@ -42,7 +42,8 @@
 }
 .footer {
   width: 100%;
-  background-color: #0f6292;
+  border-width: 3px;
+  border-style: solid;
   text-align: center;
   padding: 10px;
   font-size: 1em;

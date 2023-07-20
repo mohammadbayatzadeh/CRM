@@ -6,7 +6,7 @@ function HomePage({ costumers }) {
     <>
       {costumers.length ? costumers.map((costumer) => (
         <Card key={costumer._id} {...costumer} />
-      )) : <h2>there is no costumer...</h2>}
+      )) : <h2>no costumer yet...</h2>}
     </>
   );
 }

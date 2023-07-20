@@ -1,13 +1,11 @@
-import RegisterPage from "@/components/templates/RegisterPage";
-
 //functions
 import { verifyToken } from "@/utils/functions";
 
-function Register() {
-  return <RegisterPage />;
+function Home() {
+  return <h2>Welcome to CRM Panel</h2>;
 }
 
-export default Register;
+export default Home;
 
 export async function getServerSideProps(context) {
   const { jwtToken } = context.req.cookies;
