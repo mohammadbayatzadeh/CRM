@@ -15,7 +15,8 @@ export default async function handler(req, res) {
       httpOnly: true,
       maxAge: -1,
       path: "/",
-      sameSite: true,
+      sameSite: "none",
+      secure: true,
     });
 
     return res

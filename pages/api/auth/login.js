@@ -45,7 +45,8 @@ export default async function handler(req, res) {
       httpOnly: true,
       maxAge: expireTime,
       path: "/",
-      sameSite:true
+      sameSite:'none',
+      secure:true
     });
 
     return res

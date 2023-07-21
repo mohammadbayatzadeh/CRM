@@ -53,9 +53,11 @@ function Layout({ children }) {
           <Link href="/" className={styles.logo}>
             CRM PANEL
           </Link>
-          <div onClick={themeHandler} className={styles.icon}>
-            {theme === "dark" ? <Sun /> : <Moon />}
-            {name && ` Welcome ${seperateName(name)}`}
+          <div className={styles.icon}>
+            <span onClick={themeHandler}>
+              {theme === "dark" ? <Sun /> : <Moon />}
+            </span>
+            {name && ` welcome ${seperateName(name)}`}
           </div>
           {isLoggedIn ? (
             <>
