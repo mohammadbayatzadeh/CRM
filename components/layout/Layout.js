@@ -30,21 +30,24 @@ function Layout({ children }) {
       .get("/api/auth/logout")
       .then((res) => {
         setName("");
+        router.push("/login");
         Toast(res.data.message, "success");
         AuthHandler();
-        router.push("/login");
       })
       .catch((err) => Toast(err.response.data.message, "error"));
   };
   const AuthHandler = () => {
     axios
       .get("/api/manager")
-      .then((res) => (setIsLoggedIn(true), setName(res.data.data)))
+      .then((res) => {
+        setIsLoggedIn(true);
+        setName(res.data.data);
+      })
       .catch((err) => setIsLoggedIn(false));
   };
 
   return (
-    <div id={[theme]} >
+    <div id={[theme]}>
       <div className={styles.body}>
         <header className={styles.header}>
           <Link href="/" className={styles.logo}>

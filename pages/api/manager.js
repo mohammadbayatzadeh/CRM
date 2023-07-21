@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         .json({ status: "failed", message: "you are not logged in" });
     }
 
-    const result = verifyToken(jwtToken);
+    const result = jwtToken && verifyToken(jwtToken);
 
     if (result) {
       return res.status(200).json({ status: "success", data: result.email });
