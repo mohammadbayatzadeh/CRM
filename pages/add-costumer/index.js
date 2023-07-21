@@ -18,7 +18,7 @@ function index() {
 export default index;
 export async function getServerSideProps(context) {
   const { jwtToken } = context.req.cookies;
-  const result = verifyToken(jwtToken);
+  const result = jwtToken && verifyToken(jwtToken);
 
   if (!result) {
     return {

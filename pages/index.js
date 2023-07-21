@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
   const { jwtToken } = context.req.cookies;
   try {
     await connectDB();
-    const result = verifyToken(jwtToken);
+    const result = jwtToken && verifyToken(jwtToken);
     const manager = await Manager.findOne({ email: result.email });
     return {
       props: {

@@ -38,6 +38,7 @@ export default async function handler(req, res) {
       httpOnly: true,
       maxAge: expireTime,
       path: "/",
+      sameSite: true,
     });
     const manager = await Manager.create({ email, password: hashedPassword });
     return res

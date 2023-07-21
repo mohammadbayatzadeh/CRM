@@ -7,7 +7,7 @@ function Home() {
       <h2>Welcome to CRM Panel</h2>
       <br />
       <h3>
-        to manage your costumers, please register or login to your account.
+        To manage your costumers, please register or login to your account.
       </h3>
     </>
   );
@@ -18,7 +18,7 @@ export default Home;
 export async function getServerSideProps(context) {
   const { jwtToken } = context.req.cookies;
 
-  const result = verifyToken(jwtToken);
+  const result = jwtToken && verifyToken(jwtToken);
 
   if (result) {
     return {

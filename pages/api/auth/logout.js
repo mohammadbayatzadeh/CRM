@@ -15,8 +15,9 @@ export default async function handler(req, res) {
       httpOnly: true,
       maxAge: -1,
       path: "/",
+      sameSite: true,
     });
-    
+
     return res
       .status(200)
       .setHeader("Set-Cookie", serialized)

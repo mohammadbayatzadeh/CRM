@@ -30,9 +30,9 @@ function Layout({ children }) {
       .get("/api/auth/logout")
       .then((res) => {
         setName("");
-        router.push("/login");
-        Toast(res.data.message, "success");
         AuthHandler();
+        Toast(res.data.message, "success");
+        router.push("/login");
       })
       .catch((err) => Toast(err.response.data.message, "error"));
   };

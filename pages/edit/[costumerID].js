@@ -26,9 +26,8 @@ export default edit;
 export async function getServerSideProps(context) {
   const { jwtToken } = context.req.cookies;
   const { costumerID } = context.params;
-  const result = verifyToken(jwtToken);
-  const manager = await Manager.findOne({ email: result.email });
-  const costumer = manager.costumers.filter((item) => item._id == costumerID);
+  const result = jwtToken && verifyToken(jwtToken);
+
   if (!result) {
     return {
       redirect: {
@@ -36,6 +35,9 @@ export async function getServerSideProps(context) {
       },
     };
   }
+  
+  const manager = await Manager.findOne({ email: result.email });
+  const costumer = manager.costumers.filter((item) => item._id == costumerID);
   return {
     props: {
       data: JSON.stringify(costumer[0]),
