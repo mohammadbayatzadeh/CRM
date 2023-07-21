@@ -11,12 +11,12 @@ export default async function handler(req, res) {
         .json({ status: "failed", message: " error in connecting to db" });
     }
 
-    const serialized = serialize("jwtToken", "", {
+    const serialized = serialize("jwtToken", null, {
       httpOnly: true,
-      maxAge: 0,
+      maxAge: -1,
       path: "/",
     });
-
+    
     return res
       .status(200)
       .setHeader("Set-Cookie", serialized)
