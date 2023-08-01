@@ -1,8 +1,12 @@
 import { useState } from "react";
-import Form from "../modules/Form";
-import styles from "./AddCostumerPage.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
+
+//styles
+import styles from "./AddCostumerPage.module.css";
+
+//comps
+import Form from "../modules/Form";
 import { Toast } from "../elements/Toast";
 
 function AddCostumerPage() {

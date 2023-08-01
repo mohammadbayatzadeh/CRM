@@ -1,8 +1,12 @@
 import { useState } from "react";
-import styles from "./RegisterPage.module.css";
-import FormInput from "../elements/FormInput";
 import Link from "next/link";
 import axios from "axios";
+
+//styles
+import styles from "./RegisterPage.module.css";
+
+//comps
+import FormInput from "../elements/FormInput";
 import { Toast } from "../elements/Toast";
 import { useRouter } from "next/router";
 

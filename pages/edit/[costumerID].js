@@ -1,5 +1,7 @@
-import EditPage from "@/components/templates/EditPage";
 import Head from "next/head";
+
+//temps
+import EditPage from "@/components/templates/EditPage";
 
 //models
 import Manager from "@/models/Manager";
@@ -35,7 +37,7 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  
+
   const manager = await Manager.findOne({ email: result.email });
   const costumer = manager.costumers.filter((item) => item._id == costumerID);
   return {

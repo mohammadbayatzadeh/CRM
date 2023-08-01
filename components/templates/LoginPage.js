@@ -1,10 +1,14 @@
-import { useState } from "react";
-import styles from "./RegisterPage.module.css";
-import FormInput from "../elements/FormInput";
 import Link from "next/link";
 import axios from "axios";
-import { Toast } from "../elements/Toast";
+import { useState } from "react";
 import { useRouter } from "next/router";
+
+//comps
+import { Toast } from "../elements/Toast";
+import FormInput from "../elements/FormInput";
+
+//styles
+import styles from "./RegisterPage.module.css";
 
 function LoginPage() {
   const [email, setEmail] = useState("");

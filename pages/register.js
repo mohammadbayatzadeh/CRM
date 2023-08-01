@@ -1,3 +1,4 @@
+//temps
 import RegisterPage from "@/components/templates/RegisterPage";
 
 //functions
@@ -12,7 +13,7 @@ export default Register;
 export async function getServerSideProps(context) {
   const { jwtToken } = context.req.cookies;
 
-  const result =jwtToken && verifyToken(jwtToken);
+  const result = jwtToken && verifyToken(jwtToken);
 
   if (result) {
     return {

@@ -1,7 +1,10 @@
-import Form from "@/components/modules/Form";
-import axios from "axios";
 import { useRouter } from "next/router";
-import React from "react";
+import axios from "axios";
+
+//comps
+import Form from "@/components/modules/Form";
+
+//styles
 import styles from "./EditPage.module.css";
 
 function EditPage({ data }) {

@@ -1,14 +1,24 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import styles from "./Layout.module.css";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { darkMode, lightMode } from "../redux/theme/themeAction";
-import Moon from "../icons/Moon";
-import Sun from "../icons/Sun";
 import axios from "axios";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+//comps
 import { Toast } from "../elements/Toast";
+
+//funs
 import { seperateName } from "@/utils/functions";
+
+//redux
+import { darkMode, lightMode } from "../redux/theme/themeAction";
+import { useDispatch, useSelector } from "react-redux";
+
+//icons
+import Sun from "../icons/Sun";
+import Moon from "../icons/Moon";
+
+//styles
+import styles from "./Layout.module.css";
 
 function Layout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

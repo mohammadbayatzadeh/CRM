@@ -1,3 +1,5 @@
+//styles
+
 import styles from "./FormInput.module.css";
 
 function FormInput({ name, type, value, label, onchange }) {

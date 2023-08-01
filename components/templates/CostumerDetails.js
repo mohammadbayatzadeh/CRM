@@ -1,8 +1,10 @@
-import axios from "axios";
-import { useRouter } from "next/router";
 import React from "react";
-import styles from "./CostumerDetails.module.css";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+//styles
+import styles from "./CostumerDetails.module.css";
 
 function CostumerDetails({ data }) {
   const [form, setForm] = React.useState(null);

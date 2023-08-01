@@ -1,6 +1,9 @@
-import styles from "./Form.module.css";
+//comps
 import FormInput from "../elements/FormInput";
 import FormItem from "../elements/FormItem";
+
+//styles
+import styles from "./Form.module.css";
 
 function Form({ form, setForm }) {
   const changeHanler = (e) => {

@@ -1,4 +1,6 @@
 import Head from "next/head";
+
+//temps
 import CostumerDetails from "@/components/templates/CostumerDetails";
 
 //models

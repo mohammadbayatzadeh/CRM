@@ -1,5 +1,7 @@
-import AddCostumerPage from "@/components/templates/AddCostumerPage";
 import Head from "next/head";
+
+//temps
+import AddCostumerPage from "@/components/templates/AddCostumerPage";
 
 //functions
 import { verifyToken } from "@/utils/functions";

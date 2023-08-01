@@ -1,6 +1,10 @@
-import Layout from "@/components/layout/Layout";
-import { ToastContainer } from "react-toastify";
 import Head from "next/head";
+
+//layout
+import Layout from "@/components/layout/Layout";
+
+//comps
+import { ToastContainer } from "react-toastify";
 
 //redux
 import { store } from "@/components/redux/store";

@@ -1,5 +1,7 @@
-import { useState } from "react";
+//styles
 import styles from "./FormItem.module.css";
+
+//comps
 import FormInput from "./FormInput";
 
 function FormItem({ form, setForm }) {

@@ -1,7 +1,9 @@
-import Link from "next/link";
-import styles from "./Card.module.css";
-import axios from "axios";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import axios from "axios";
+
+//styles
+import styles from "./Card.module.css";
 
 function Card({ firstName, lastName, email, _id }) {
   const router = useRouter();
@@ -9,8 +11,7 @@ function Card({ firstName, lastName, email, _id }) {
     await axios
       .delete(`/api/costumer/${_id}`)
       .then((res) => {
-        router.replace('/')
-        // router.reload();
+        router.replace("/");
       })
       .catch((err) => {});
   };
