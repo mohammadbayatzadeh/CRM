@@ -5,6 +5,9 @@ import axios from "axios";
 //styles
 import styles from "./Card.module.css";
 
+//elements
+import { Toast } from "../elements/Toast";
+
 function Card({ firstName, lastName, email, _id }) {
   const router = useRouter();
   const deleteHandler = async () => {
@@ -12,6 +15,7 @@ function Card({ firstName, lastName, email, _id }) {
       .delete(`/api/costumer/${_id}`)
       .then((res) => {
         router.replace("/");
+        Toast(`${firstName} deleted`, "success");
       })
       .catch((err) => {});
   };
