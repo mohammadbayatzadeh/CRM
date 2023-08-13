@@ -1,9 +1,10 @@
 const text = {
-  logo: { en: "CRM PANEL", fa: "پنت مدیریت" },
+  logo: { en: "CRM PANEL", fa: "پنل مدیریت" },
   welcome: { en: "Welcome", fa: "خوش آمدید" },
   login: { en: "login", fa: "ورود" },
   logout: { en: "log out", fa: "خروج" },
   register: { en: "register", fa: "ثبت نام" },
+  lang: { en: "en", fa: "فارسی" },
   form: { en: "Form", fa: "فرم" },
   form_text: { en: "have Account", fa: "اکانت دارید" },
   homePage_title: { en: "Welcome to CRM Panel", fa: "به پنل مدیریت خوش آمدید" },

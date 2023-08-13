@@ -11,6 +11,7 @@ import { seperateName } from "@/utils/functions";
 
 //redux
 import { darkMode, lightMode } from "../redux/theme/themeAction";
+import { ENLanguage, FALanguage } from "../redux/language/LanguageAction";
 import { useDispatch, useSelector } from "react-redux";
 
 //icons
@@ -20,15 +21,22 @@ import Moon from "../icons/Moon";
 //styles
 import styles from "./Layout.module.css";
 
+//texts
+import text from "../constants/text";
+
 function Layout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState("");
-  const router = useRouter();
+  const theme = useSelector((state) => state.theme.theme);
+  const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme);
+  const router = useRouter();
 
   const themeHandler = () => {
     theme === "dark" ? dispatch(lightMode()) : dispatch(darkMode());
+  };
+  const langHandler = () => {
+    lang === "en" ? dispatch(FALanguage()) : dispatch(ENLanguage());
   };
 
   useEffect(() => {
@@ -57,28 +65,31 @@ function Layout({ children }) {
   };
 
   return (
-    <div id={[theme]}>
+    <div id={[theme]} dir={lang === "en" ? "ltr" : "rtl"}>
       <div className={styles.body}>
         <header className={styles.header}>
           <Link href="/" className={styles.logo}>
-            CRM PANEL
+            {text.logo[lang]}
           </Link>
+          <span style={{ cursor: "pointer" }} onClick={langHandler}>
+            ({text.lang[lang]})
+          </span>
           <div className={styles.icon}>
             <span onClick={themeHandler}>
               {theme === "dark" ? <Sun /> : <Moon />}
             </span>
-            {name && ` welcome ${seperateName(name)}`}
+            {name && ` ${text.welcome[lang]} ${seperateName(name)}`}
           </div>
           {isLoggedIn ? (
             <>
               {router.pathname === "/add-costumer" || (
                 <Link className={styles.button} href="/add-costumer">
                   <p className={styles.none}>+</p>
-                  <p className={styles.text}>Add costumer</p>
+                  <p className={styles.text}>{text.add_costumer[lang]}</p>
                 </Link>
               )}
               <button onClick={logOutHandler} className={styles.button}>
-                log out
+                {text.logout[lang]}
               </button>
             </>
           ) : (
@@ -88,7 +99,7 @@ function Layout({ children }) {
                   className={styles.button}
                   onClick={() => router.replace("/login")}
                 >
-                  login
+                  {text.login[lang]}
                 </button>
               )}
               {router.pathname === "/register" || (
@@ -96,7 +107,7 @@ function Layout({ children }) {
                   className={styles.button}
                   onClick={() => router.replace("/register")}
                 >
-                  register
+                  {text.register[lang]}
                 </button>
               )}
             </>
@@ -106,7 +117,7 @@ function Layout({ children }) {
           {children}
         </div>
         <footer className={styles.footer}>
-          <h5>Next Project | CRM Project &copy;</h5>
+          <h5>{text.footer[lang]}</h5>
         </footer>
       </div>
     </div>
