@@ -8,17 +8,19 @@
   border-width: 2px;
   border-style: solid;
   margin: 10px 0;
-  display: flex;
-  align-items: center;
+  direction: ltr;
+  /* display: flex;
+  align-items: center; */
+  display: grid;
+  grid-template: 1fr / 100px 130px auto 250px;
 }
 
 .container span {
-  word-wrap: break-word;
   margin-right: 40px;
 }
-.container span:nth-child(2) {
+/* .container span:nth-child(3) {
   margin-right: auto;
-}
+} */
 .buttons a {
   margin-left: 10px;
 }

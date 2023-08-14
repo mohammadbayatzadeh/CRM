@@ -13,18 +13,21 @@
 }
 .header {
   display: flex;
-  justify-content: flex-start;
-  width: 100%;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 10px 0;
   margin: 10px 0 50px 0;
+}
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .logo {
   font-size: 2em;
 }
-.icon {
-  margin-right: auto;
-}
+
 .button {
   font-size: 0.8em;
   outline: none;

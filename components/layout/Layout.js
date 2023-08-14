@@ -68,50 +68,54 @@ function Layout({ children }) {
     <div id={[theme]} dir={lang === "en" ? "ltr" : "rtl"}>
       <div className={styles.body}>
         <header className={styles.header}>
-          <Link href="/" className={styles.logo}>
-            {text.logo[lang]}
-          </Link>
-          <span style={{ cursor: "pointer" }} onClick={langHandler}>
-            ({text.lang[lang]})
-          </span>
-          <div className={styles.icon}>
-            <span onClick={themeHandler}>
-              {theme === "dark" ? <Sun /> : <Moon />}
+          <div className={styles.headerSection}>
+            <Link href="/" className={styles.logo}>
+              {text.logo[lang]}
+            </Link>
+            <span style={{ cursor: "pointer" }} onClick={langHandler}>
+              ({text.lang[lang]})
             </span>
-            {name && ` ${text.welcome[lang]} ${seperateName(name)}`}
+            <div className={styles.icon}>
+              <span onClick={themeHandler}>
+                {theme === "dark" ? <Sun /> : <Moon />}
+              </span>
+              {name && ` ${text.welcome[lang]} ${seperateName(name)}`}
+            </div>
           </div>
-          {isLoggedIn ? (
-            <>
-              {router.pathname === "/add-costumer" || (
-                <Link className={styles.button} href="/add-costumer">
-                  <p className={styles.none}>+</p>
-                  <p className={styles.text}>{text.add_costumer[lang]}</p>
-                </Link>
-              )}
-              <button onClick={logOutHandler} className={styles.button}>
-                {text.logout[lang]}
-              </button>
-            </>
-          ) : (
-            <>
-              {router.pathname === "/login" || (
-                <button
-                  className={styles.button}
-                  onClick={() => router.replace("/login")}
-                >
-                  {text.login[lang]}
+          <div className={styles.headerSection}>
+            {isLoggedIn ? (
+              <>
+                {router.pathname === "/add-costumer" || (
+                  <Link className={styles.button} href="/add-costumer">
+                    <p className={styles.none}>+</p>
+                    <p className={styles.text}>{text.add_costumer[lang]}</p>
+                  </Link>
+                )}
+                <button onClick={logOutHandler} className={styles.button}>
+                  {text.logout[lang]}
                 </button>
-              )}
-              {router.pathname === "/register" || (
-                <button
-                  className={styles.button}
-                  onClick={() => router.replace("/register")}
-                >
-                  {text.register[lang]}
-                </button>
-              )}
-            </>
-          )}
+              </>
+            ) : (
+              <>
+                {router.pathname === "/login" || (
+                  <button
+                    className={styles.button}
+                    onClick={() => router.replace("/login")}
+                  >
+                    {text.login[lang]}
+                  </button>
+                )}
+                {router.pathname === "/register" || (
+                  <button
+                    className={styles.button}
+                    onClick={() => router.replace("/register")}
+                  >
+                    {text.register[lang]}
+                  </button>
+                )}
+              </>
+            )}
+          </div>
         </header>
         <div className={styles.container} id={[theme]}>
           {children}

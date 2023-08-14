@@ -29,9 +29,8 @@ function Card({ firstName, lastName, email, _id }) {
 
   return (
     <div className={styles.container}>
-      <span>
-        {firstName} {lastName}
-      </span>
+      <span>{firstName}</span>
+      <span>{lastName}</span>
       <span>{email}</span>
       <div className={styles.buttons}>
         <button onClick={deleteHandler}>{text.delete[lang]}</button>
