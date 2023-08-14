@@ -14,7 +14,14 @@ import text from "../constants/text";
 //redux
 import { useSelector } from "react-redux";
 
-function Card({ firstName, lastName, email, _id }) {
+function Card({
+  firstName_EN,
+  firstName_FA,
+  lastName_EN,
+  lastName_FA,
+  email,
+  _id,
+}) {
   const router = useRouter();
   const lang = useSelector((state) => state.language.lang);
   const deleteHandler = async () => {
@@ -22,15 +29,15 @@ function Card({ firstName, lastName, email, _id }) {
       .delete(`/api/costumer/${_id}`)
       .then((res) => {
         router.replace("/");
-        Toast(`${firstName} deleted`, "success");
+        Toast(`${firstName_EN} deleted`, "success");
       })
       .catch((err) => {});
   };
 
   return (
     <div className={styles.container}>
-      <span>{firstName}</span>
-      <span>{lastName}</span>
+      <span>{lang === "en" ? firstName_EN : firstName_FA}</span>
+      <span>{lang === "en" ? lastName_EN : lastName_FA}</span>
       <span>{email}</span>
       <div className={styles.buttons}>
         <button onClick={deleteHandler}>{text.delete[lang]}</button>

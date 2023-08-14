@@ -20,20 +20,42 @@ function Form({ form, setForm }) {
 
   return (
     <div className={styles.container}>
-      <FormInput
-        name="firstName"
-        value={form.firstName}
-        type="text"
-        label={`${text.first_name[lang]}*`}
-        onchange={(e) => changeHanler(e)}
-      />
-      <FormInput
-        name="lastName"
-        value={form.lastName}
-        type="text"
-        label={`${text.last_name[lang]}*`}
-        onchange={(e) => changeHanler(e)}
-      />
+      <div className={styles.doubleInput} style={{ direction: "ltr" }}>
+        <FormInput
+          name="firstName_EN"
+          value={form.firstName_EN}
+          type="text"
+          label="first name*"
+          ltr={true}
+          onchange={(e) => changeHanler(e)}
+        />
+        <FormInput
+          name="firstName_FA"
+          value={form.firstName_FA}
+          type="text"
+          label="نام*"
+          rtl={true}
+          onchange={(e) => changeHanler(e)}
+        />
+      </div>
+      <div className={styles.doubleInput} style={{ direction: "ltr" }}>
+        <FormInput
+          name="lastName_EN"
+          value={form.lastName_EN}
+          type="text"
+          label="last name*"
+          ltr={true}
+          onchange={(e) => changeHanler(e)}
+        />
+        <FormInput
+          name="lastName_FA"
+          value={form.lastName_FA}
+          type="text"
+          label="نام خانوادگی*"
+          rtl={true}
+          onchange={(e) => changeHanler(e)}
+        />
+      </div>
       <FormInput
         name="email"
         value={form.email}
@@ -44,7 +66,7 @@ function Form({ form, setForm }) {
       <FormInput
         name="phone"
         value={form.phone}
-        type="tel"
+        type="text"
         label={text.phone[lang]}
         onchange={(e) => changeHanler(e)}
       />

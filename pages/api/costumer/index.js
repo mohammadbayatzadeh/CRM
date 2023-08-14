@@ -16,7 +16,13 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { data } = req.body;
 
-    if (!data.firstName || !data.lastName || !data.email) {
+    if (
+      !data.firstName_EN ||
+      !data.lastName_EN ||
+      !data.firstName_FA ||
+      !data.lastName_FA ||
+      !data.email
+    ) {
       return res
         .status(400)
         .json({ status: "Failed", message: "invalid data" });
@@ -31,7 +37,7 @@ export default async function handler(req, res) {
     }
 
     const manager = await Manager.findOne({ email: result.email });
-    
+
     try {
       manager.costumers.push(data);
       await manager.save();

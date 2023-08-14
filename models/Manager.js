@@ -17,15 +17,21 @@ const managerSchema = new Schema({
   },
   costumers: [
     {
-      firstName: {
+      firstName_EN: {
         type: String,
         required: true,
-        minLength: 3,
       },
-      lastName: {
+      firstName_FA: {
         type: String,
         required: true,
-        minLength: 3,
+      },
+      lastName_EN: {
+        type: String,
+        required: true,
+      },
+      lastName_FA: {
+        type: String,
+        required: true,
       },
       email: {
         type: String,

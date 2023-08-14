@@ -28,8 +28,10 @@ function EditPage({ data }) {
 
   const cancelHandler = () => {
     setForm({
-      firstName: "",
-      lastName: "",
+      firstName_EN: "",
+      firstName_FA: "",
+      lastName_EN: "",
+      lastName_FA: "",
       email: "",
       phone: "",
       city: "",
@@ -52,9 +54,7 @@ function EditPage({ data }) {
 
   return (
     <div className={styles.container}>
-      <h3>
-        {text.edit_page[lang]} 
-      </h3>
+      <h3>{text.edit_page[lang]}</h3>
       {form && <Form form={form} setForm={setForm} />}
       <div className={styles.buttons}>
         <button onClick={cancelHandler} className={styles.cancel}>

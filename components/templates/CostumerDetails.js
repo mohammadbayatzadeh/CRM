@@ -39,10 +39,12 @@ function CostumerDetails({ data }) {
 
         <div className={styles.container}>
           <p>
-            {text.first_name[lang]}: {form.firstName}
+            {text.first_name[lang]}:{" "}
+            {lang === "en" ? form.firstName_EN : form.firstName_FA}
           </p>
           <p>
-            {text.last_name[lang]}: {form.lastName}
+            {text.last_name[lang]}:{" "}
+            {lang === "en" ? form.lastName_EN : form.lastName_FA}
           </p>
           <p>
             {text.email[lang]}: {form.email}

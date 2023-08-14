@@ -8,9 +8,7 @@
   border-width: 2px;
   border-style: solid;
   margin: 10px 0;
-  direction: ltr;
-  /* display: flex;
-  align-items: center; */
+
   display: grid;
   grid-template: 1fr / 100px 130px auto 250px;
 }
@@ -18,9 +16,11 @@
 .container span {
   margin-right: 40px;
 }
-/* .container span:nth-child(3) {
-  margin-right: auto;
-} */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .buttons a {
   margin-left: 10px;
 }

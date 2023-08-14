@@ -18,8 +18,10 @@ import text from "../constants/text";
 function AddCostumerPage() {
   const lang = useSelector((state) => state.language.lang);
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
+    firstName_EN: "",
+    firstName_FA: "",
+    lastName_EN: "",
+    lastName_FA: "",
     email: "",
     phone: "",
     city: "",
@@ -30,8 +32,10 @@ function AddCostumerPage() {
 
   const cancelHandler = () => {
     setForm({
-      firstName: "",
-      lastName: "",
+      firstName_EN: "",
+      firstName_FA: "",
+      lastName_EN: "",
+      lastName_FA: "",
       email: "",
       phone: "",
       city: "",
@@ -41,18 +45,22 @@ function AddCostumerPage() {
   };
 
   const saveHandler = async () => {
-    form.firstName &&
-      form.lastName &&
+    form.firstName_EN &&
+      form.firstName_FA &&
+      form.lastName_EN &&
+      form.lastName_FA &&
       form.email &&
       form.products[0] &&
       form.products[0].name &&
       (await axios
         .post("/api/costumer", { data: form })
         .then((res) => {
-          Toast(`${form.firstName} createad`, "success");
+          Toast(`${form.firstName_EN} createad`, "success");
           router.push("/");
         })
-        .catch((err) => {}));
+        .catch((err) => {
+          console.log(err);
+        }));
   };
 
   return (

@@ -1,8 +1,9 @@
 .container {
-  width: 100%;
+  width: 95%;
   border-width: 2px;
   border-style: solid;
   padding: 10px;
+  margin: 0 auto;
   border-radius: 7px;
   display: flex;
   flex-direction: column;

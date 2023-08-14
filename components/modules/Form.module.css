@@ -1,0 +1,7 @@
+.container {
+    direction: unset;
+}
+.doubleInput {
+  display: flex;
+  align-items: center;
+}
