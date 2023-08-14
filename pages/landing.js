@@ -1,14 +1,19 @@
 //functions
 import { verifyToken } from "@/utils/functions";
 
+//contants
+import text from "@/components/constants/text";
+
+//redux
+import { useSelector } from "react-redux";
+
 function Home() {
+  const lang = useSelector((state) => state.language.lang);
   return (
     <>
-      <h2>Welcome to CRM Panel</h2>
+      <h2>{text.welcome[lang]}</h2>
       <br />
-      <h3>
-        To manage your costumers, please register or login to your account.
-      </h3>
+      <h3>{text.homePage_text[lang]}</h3>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 //comps
 import Form from "@/components/modules/Form";
@@ -8,8 +8,15 @@ import Form from "@/components/modules/Form";
 //styles
 import styles from "./EditPage.module.css";
 
+//redux
+import { useSelector } from "react-redux";
+
+//constants
+import text from "../constants/text";
+
 function EditPage({ data }) {
   const [form, setForm] = React.useState({});
+  const lang = useSelector((state) => state.language.lang);
 
   const router = useRouter();
 
@@ -45,14 +52,16 @@ function EditPage({ data }) {
 
   return (
     <div className={styles.container}>
-      <h3>Edit Form</h3>
+      <h3>
+        {text.edit_page[lang]} 
+      </h3>
       {form && <Form form={form} setForm={setForm} />}
       <div className={styles.buttons}>
         <button onClick={cancelHandler} className={styles.cancel}>
-          Cancel
+          {text.cancel[lang]}
         </button>
         <button onClick={saveHandler} className={styles.save}>
-          Save
+          {text.save[lang]}
         </button>
       </div>
     </div>

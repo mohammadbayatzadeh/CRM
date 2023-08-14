@@ -6,9 +6,16 @@ import { useRouter } from "next/router";
 //styles
 import styles from "./CostumerDetails.module.css";
 
+//redux
+import { useSelector } from "react-redux";
+
+//constants
+import text from "../constants/text";
+
 function CostumerDetails({ data }) {
   const [form, setForm] = React.useState(null);
   const router = useRouter();
+  const lang = useSelector((state) => state.language.lang);
   const { costumerID } = router.query;
 
   React.useEffect(() => {
@@ -28,21 +35,33 @@ function CostumerDetails({ data }) {
   if (form)
     return (
       <div>
-        <h3>Details Page</h3>
+        <h3>{text.details_page[lang]} </h3>
 
         <div className={styles.container}>
-          <p>first name: {form.firstName}</p>
-          <p>last name: {form.lastName}</p>
-          <p>email: {form.email}</p>
-          <p>phone: {form.phone}</p>
-          <p>updated at: {form.updatedAt}</p>
-          <p>city: {form.city}</p>
+          <p>
+            {text.first_name[lang]}: {form.firstName}
+          </p>
+          <p>
+            {text.last_name[lang]}: {form.lastName}
+          </p>
+          <p>
+            {text.email[lang]}: {form.email}
+          </p>
+          <p>
+            {text.phone[lang]}: {form.phone}
+          </p>
+          <p>
+            {text.updated_at[lang]}: {form.updatedAt}
+          </p>
+          <p>
+            {text.city[lang]}: {form.city}
+          </p>
         </div>
         <div className={styles.productContainer}>
           <div className={styles.row}>
-            <span>product</span>
-            <span>price</span>
-            <span>qty</span>
+            <span>{text.product[lang]}</span>
+            <span>{text.price[lang]}</span>
+            <span>{text.qty[lang]}</span>
           </div>
           {form.products.map((product, index) => (
             <div className={styles.row} key={index}>
@@ -53,8 +72,8 @@ function CostumerDetails({ data }) {
           ))}
         </div>
         <div className={styles.row}>
-          <button onClick={deleteHandler}>DELETE</button>
-          <Link href={`/edit/${costumerID}`}>EDIT</Link>
+          <button onClick={deleteHandler}>{text.delete[lang]}</button>
+          <Link href={`/edit/${costumerID}`}>{text.edit[lang]}</Link>
         </div>
       </div>
     );

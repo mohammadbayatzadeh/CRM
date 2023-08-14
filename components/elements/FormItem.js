@@ -1,11 +1,17 @@
+import { useSelector } from "react-redux";
+
 //styles
 import styles from "./FormItem.module.css";
 
 //comps
 import FormInput from "./FormInput";
 
+//constants
+import text from "../constants/text";
+
 function FormItem({ form, setForm }) {
   const { products } = form;
+  const lang = useSelector((state) => state.language.lang);
 
   const addHandler = () => {
     products.length > 0 &&
@@ -38,7 +44,7 @@ function FormItem({ form, setForm }) {
 
   return (
     <div className={styles.container}>
-      <h3>purchased items</h3>
+      <h3>{text.purchased_items[lang]}</h3>
       {products &&
         products.length > 0 &&
         products.map((product, index) => (
@@ -46,7 +52,7 @@ function FormItem({ form, setForm }) {
             <FormInput
               name="name"
               type="text"
-              label="name"
+              label={text.name[lang]}
               value={product.name}
               onchange={(e) => changeHandler(e, index)}
             />
@@ -54,7 +60,7 @@ function FormItem({ form, setForm }) {
               <FormInput
                 name="price"
                 type="text"
-                label="Price"
+                label={text.price[lang]}
                 value={product.price}
                 onchange={(e) => changeHandler(e, index)}
               />
@@ -62,7 +68,7 @@ function FormItem({ form, setForm }) {
               <FormInput
                 name="qty"
                 type="text"
-                label="qty"
+                label={text.qty[lang]}
                 value={product.qty}
                 onchange={(e) => changeHandler(e, index)}
               />
@@ -71,12 +77,12 @@ function FormItem({ form, setForm }) {
               className={styles.remove}
               onClick={() => removeHandler(index)}
             >
-              remove item
+              {text.remove[lang]} {text.item[lang]}
             </button>
           </div>
         ))}
       <button className={styles.add} onClick={() => addHandler()}>
-        Add item
+        {text.add[lang]} {text.item[lang]}
       </button>
     </div>
   );

@@ -21,7 +21,7 @@ import Moon from "../icons/Moon";
 //styles
 import styles from "./Layout.module.css";
 
-//texts
+//constants
 import text from "../constants/text";
 
 function Layout({ children }) {

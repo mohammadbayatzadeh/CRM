@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
 
@@ -8,11 +9,17 @@ import styles from "./RegisterPage.module.css";
 //comps
 import FormInput from "../elements/FormInput";
 import { Toast } from "../elements/Toast";
-import { useRouter } from "next/router";
+
+//redux
+import { useSelector } from "react-redux";
+
+//constants
+import text from "../constants/text";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const lang = useSelector((state) => state.language.lang);
   const router = useRouter();
 
   const saveHandler = async () => {
@@ -32,26 +39,26 @@ function RegisterPage() {
 
   return (
     <div className={styles.container}>
-      <h3>Register Form</h3>
+      <h3>{text.register_form[lang]}</h3>
       <FormInput
         name="email"
         type="email"
         value={email}
-        label="Email"
+        label={text.email[lang]}
         onchange={(e) => setEmail(e.target.value)}
       />
       <FormInput
         name="password"
         type="password"
         value={password}
-        label="Password"
+        label={text.password[lang]}
         onchange={(e) => setPassword(e.target.value)}
       />
       <button onClick={saveHandler} className={styles.save}>
-        Register
+        {text.register[lang]}
       </button>
       <p>
-        have Account? <Link href="/login">login</Link>
+        {text.have_account[lang]}? <Link href="/login">{text.login[lang]}</Link>
       </p>
     </div>
   );

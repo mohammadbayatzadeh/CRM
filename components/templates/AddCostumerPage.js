@@ -9,7 +9,14 @@ import styles from "./AddCostumerPage.module.css";
 import Form from "../modules/Form";
 import { Toast } from "../elements/Toast";
 
+//redux
+import { useSelector } from "react-redux";
+
+//constants
+import text from "../constants/text";
+
 function AddCostumerPage() {
+  const lang = useSelector((state) => state.language.lang);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -50,14 +57,14 @@ function AddCostumerPage() {
 
   return (
     <div className={styles.container}>
-      <h4>Add Costumer</h4>
+      <h4>{text.add_costumer[lang]}</h4>
       <Form form={form} setForm={setForm} />
       <div className={styles.buttons}>
         <button onClick={cancelHandler} className={styles.cancel}>
-          Cancel
+          {text.delete[lang]}
         </button>
         <button onClick={saveHandler} className={styles.save}>
-          Save
+          {text.save[lang]}
         </button>
       </div>
     </div>

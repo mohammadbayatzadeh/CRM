@@ -10,9 +10,16 @@ import FormInput from "../elements/FormInput";
 //styles
 import styles from "./RegisterPage.module.css";
 
+//redux
+import { useSelector } from "react-redux";
+
+//constants
+import text from "../constants/text";
+
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const lang = useSelector((state) => state.language.lang);
   const router = useRouter();
 
   const loginHandler = async () => {
@@ -32,26 +39,27 @@ function LoginPage() {
 
   return (
     <div className={styles.container}>
-      <h3>login Form</h3>
+      <h3>{text.login_form[lang]}</h3>
       <FormInput
         name="email"
         type="email"
         value={email}
-        label="Email"
+        label={text.email[lang]}
         onchange={(e) => setEmail(e.target.value)}
       />
       <FormInput
         name="password"
         type="password"
         value={password}
-        label="Password"
+        label={text.password[lang]}
         onchange={(e) => setPassword(e.target.value)}
       />
       <button onClick={loginHandler} className={styles.save}>
-        Login
+        {text.login[lang]}
       </button>
       <p>
-        Dont have Account? <Link href="/register">register</Link>
+        {text.havent_account[lang]}?{" "}
+        <Link href="/register">{text.register[lang]}</Link>
       </p>
     </div>
   );
