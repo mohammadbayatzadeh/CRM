@@ -41,8 +41,10 @@ function Card({
       <span>{email}</span>
       <div className={styles.buttons}>
         <button onClick={deleteHandler}>{text.delete[lang]}</button>
-        <Link href={`edit/${_id}`}>{text.edit[lang]}</Link>
-        <Link href={`costumer/${_id}`}>{text.details[lang]}</Link>
+        <div>
+          <Link href={`edit/${_id}`}>{text.edit[lang]}</Link>
+          <Link href={`costumer/${_id}`}>{text.details[lang]}</Link>
+        </div>
       </div>
     </div>
   );

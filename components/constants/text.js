@@ -25,7 +25,7 @@ const text = {
   edit: { en: "edit", fa: "ویرایش" },
   details: { en: "details", fa: "جزِئیات" },
   add_costumer: { en: "add costumer", fa: "افزودن مشتری" },
-  details_page: { en: "details page", fa: "صفحه مشتری" },
+  details_page: { en: "details page", fa: "صفحه جزئیات" },
   edit_page: { en: "edit page", fa: "صفحه ویرایش" },
   no_costumer: { en: "no costumer yet ...", fa: "فعلا مشتری وجود ندارد" },
   name: { en: " name", fa: "نام" },

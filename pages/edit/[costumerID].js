@@ -15,7 +15,7 @@ function edit({ data }) {
     <>
       <Head>
         <title>
-          {costumerData.firstName} {costumerData.lastName} panel
+          {costumerData.firstName_EN} {costumerData.lastName_EN} panel
         </title>
       </Head>
       <EditPage data={costumerData} />
