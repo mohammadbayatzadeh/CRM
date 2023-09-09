@@ -12,11 +12,8 @@ export default async function handler(req, res) {
     }
 
     const serialized = serialize("jwtToken", null, {
-      httpOnly: true,
       maxAge: -1,
       path: "/",
-      sameSite: "none",
-      secure: true,
     });
 
     return res

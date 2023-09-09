@@ -35,10 +35,10 @@ export default async function handler(req, res) {
       expiresIn: expireTime,
     });
     const serialized = serialize("jwtToken", token, {
-      httpOnly: true,
       maxAge: expireTime,
       path: "/",
-      sameSite: "none",
+      httpOnly: true,
+      sameSite: "lax",
       secure: true,
     });
     const manager = await Manager.create({ email, password: hashedPassword });
