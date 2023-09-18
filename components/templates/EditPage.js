@@ -43,13 +43,10 @@ function EditPage({ data }) {
   const saveHandler = async () => {
     await axios
       .patch(`/api/costumer/${costumerID}`, { data: form })
-      .then((res) => {
+      .then(() => {
         router.push("/");
-        console.log(res.data);
       })
-      .catch((err) => {
-        console.log(err.response);
-      });
+      .catch(() => {});
   };
 
   return (

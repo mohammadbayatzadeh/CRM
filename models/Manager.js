@@ -39,7 +39,14 @@ const managerSchema = new Schema({
         minLength: 5,
       },
       phone: String,
-      city: String,
+      city_EN: {
+        type: String,
+        required: true,
+      },
+      city_FA: {
+        type: String,
+        required: true,
+      },
       products: {
         type: [Object],
         default: [],

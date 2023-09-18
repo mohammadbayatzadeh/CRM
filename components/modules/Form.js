@@ -70,13 +70,24 @@ function Form({ form, setForm }) {
         label={text.phone[lang]}
         onchange={(e) => changeHanler(e)}
       />
-      <FormInput
-        name="city"
-        value={form.city}
-        type="text"
-        label={text.city[lang]}
-        onchange={(e) => changeHanler(e)}
-      />
+      <div className={styles.doubleInput} style={{ direction: "ltr" }}>
+        <FormInput
+          name="city_EN"
+          value={form.city_EN}
+          type="text"
+          label="city"
+          ltr={true}
+          onchange={(e) => changeHanler(e)}
+        />
+        <FormInput
+          name="city_FA"
+          value={form.city_FA}
+          type="text"
+          label="شهر"
+          rtl={true}
+          onchange={(e) => changeHanler(e)}
+        />
+      </div>
       <FormItem form={form} setForm={setForm} />
     </div>
   );

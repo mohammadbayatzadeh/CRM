@@ -27,9 +27,8 @@ function CostumerDetails({ data }) {
       .delete(`/api/costumer/${costumerID}`)
       .then((res) => {
         router.push("/");
-        console.log(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch();
   };
 
   if (form)
@@ -39,12 +38,10 @@ function CostumerDetails({ data }) {
 
         <div className={styles.container}>
           <p>
-            {text.first_name[lang]}:{" "}
-            {lang === "en" ? form.firstName_EN : form.firstName_FA}
+            {text.first_name[lang]}: {form[`firstName_${lang.toUpperCase()}`]}
           </p>
           <p>
-            {text.last_name[lang]}:{" "}
-            {lang === "en" ? form.lastName_EN : form.lastName_FA}
+            {text.last_name[lang]}: {form[`lastName_${lang.toUpperCase()}`]}
           </p>
           <p>
             {text.email[lang]}: {form.email}
@@ -56,7 +53,7 @@ function CostumerDetails({ data }) {
             {text.updated_at[lang]}: {form.updatedAt}
           </p>
           <p>
-            {text.city[lang]}: {form.city}
+            {text.city[lang]}: {form[`city_${lang.toUpperCase()}`]}
           </p>
         </div>
         <div className={styles.productContainer}>

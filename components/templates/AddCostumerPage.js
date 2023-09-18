@@ -24,7 +24,8 @@ function AddCostumerPage() {
     lastName_FA: "",
     email: "",
     phone: "",
-    city: "",
+    city_EN: "",
+    city_FA: "",
     products: [],
   });
 
@@ -38,7 +39,8 @@ function AddCostumerPage() {
       lastName_FA: "",
       email: "",
       phone: "",
-      city: "",
+      city_EN: "",
+      city_FA: "",
       products: [],
     });
     router.push("/");
@@ -49,18 +51,18 @@ function AddCostumerPage() {
       form.firstName_FA &&
       form.lastName_EN &&
       form.lastName_FA &&
+      form.city_FA &&
+      form.city_EN &&
       form.email &&
       form.products[0] &&
       form.products[0].name &&
       (await axios
         .post("/api/costumer", { data: form })
-        .then((res) => {
+        .then(() => {
           Toast(`${form.firstName_EN} createad`, "success");
           router.push("/");
         })
-        .catch((err) => {
-          console.log(err);
-        }));
+        .catch());
   };
 
   return (

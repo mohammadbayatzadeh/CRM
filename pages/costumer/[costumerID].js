@@ -40,6 +40,7 @@ export async function getServerSideProps(context) {
         data: JSON.stringify(costumer[0]),
       },
     };
+    
   } catch (err) {
     return {
       notFound: true,
