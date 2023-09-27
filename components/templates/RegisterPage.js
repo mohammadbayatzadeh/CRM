@@ -4,7 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 
 //styles
-import styles from "./RegisterPage.module.css";
+import styles from "./AuthPage.module.css";
 
 //comps
 import FormInput from "../elements/FormInput";

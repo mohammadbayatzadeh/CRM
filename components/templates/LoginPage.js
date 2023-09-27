@@ -8,7 +8,7 @@ import { Toast } from "../elements/Toast";
 import FormInput from "../elements/FormInput";
 
 //styles
-import styles from "./RegisterPage.module.css";
+import styles from "./AuthPage.module.css";
 
 //redux
 import { useSelector } from "react-redux";
