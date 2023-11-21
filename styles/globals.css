@@ -47,3 +47,7 @@ a {
 #light button {
   color: black;
 }
+
+input , button {
+  font-family: inherit;
+}

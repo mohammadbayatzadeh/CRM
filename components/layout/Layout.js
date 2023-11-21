@@ -23,6 +23,7 @@ import styles from "./Layout.module.css";
 
 //constants
 import text from "../constants/text";
+import { Irancell } from "@/utils/Fonts";
 
 function Layout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -65,7 +66,11 @@ function Layout({ children }) {
   };
 
   return (
-    <div id={[theme]} dir={lang === "en" ? "ltr" : "rtl"}>
+    <div
+      id={[theme]}
+      dir={lang === "en" ? "ltr" : "rtl"}
+      className={Irancell.className}
+    >
       <div className={styles.body}>
         <header className={styles.header}>
           <div className={styles.headerSection}>
