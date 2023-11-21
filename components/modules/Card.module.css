@@ -10,6 +10,7 @@
   margin: 10px 0;
   display: grid;
   grid-template: 1fr / 10% 15% auto 150px;
+  align-items: center;
 }
 
 .container span {
