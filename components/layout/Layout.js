@@ -104,20 +104,14 @@ function Layout({ children }) {
             ) : (
               <>
                 {router.pathname === "/login" || (
-                  <button
-                    className={styles.button}
-                    onClick={() => router.replace("/login")}
-                  >
+                  <Link className={styles.button} href="/login">
                     {text.login[lang]}
-                  </button>
+                  </Link>
                 )}
                 {router.pathname === "/register" || (
-                  <button
-                    className={styles.button}
-                    onClick={() => router.replace("/register")}
-                  >
+                  <Link className={styles.button} href="/register">
                     {text.register[lang]}
-                  </button>
+                  </Link>
                 )}
               </>
             )}
