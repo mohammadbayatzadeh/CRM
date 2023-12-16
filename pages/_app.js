@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 //redux
 import { store } from "@/components/redux/store";
 import { Provider } from "react-redux";
+import NextTopLoader from 'nextjs-toploader';
 
 //styles
 import "@/styles/globals.css";
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }) {
     <Provider store={store}>
       <ToastContainer />
       <Layout>
+        <NextTopLoader color="red" />
         <Head>
           <title>CRM panel</title>
           <meta name="description" content="CRM panel" />

@@ -23,7 +23,7 @@ const text = {
   password: { en: "password", fa: "رمز عبور" },
   delete: { en: "delete", fa: "حذف" },
   edit: { en: "edit", fa: "ویرایش" },
-  details: { en: "details", fa: "جزِئیات" },
+  details: { en: "details", fa: "جزئیات" },
   add_costumer: { en: "add costumer", fa: "افزودن مشتری" },
   details_page: { en: "details page", fa: "صفحه جزئیات" },
   edit_page: { en: "edit page", fa: "صفحه ویرایش" },
