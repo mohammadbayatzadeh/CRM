@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 //temps
-import AddCostumerPage from "@/components/templates/AddCostumerPage";
+import AddCostumerPage from "@/components/templates/dashboard/AddCostumerPage";
 
 //functions
 import { verifyToken } from "@/utils/functions";

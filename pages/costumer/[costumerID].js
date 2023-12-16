@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 //temps
-import CostumerDetails from "@/components/templates/CostumerDetails";
+import CostumerDetails from "@/components/templates/dashboard/CostumerDetails";
 
 //models
 import Manager from "@/models/Manager";
@@ -40,7 +40,6 @@ export async function getServerSideProps(context) {
         data: JSON.stringify(costumer[0]),
       },
     };
-    
   } catch (err) {
     return {
       notFound: true,

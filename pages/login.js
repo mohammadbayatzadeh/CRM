@@ -1,5 +1,5 @@
 //temps
-import LoginPage from "@/components/templates/LoginPage";
+import LoginPage from "@/components/templates/auth/LoginPage";
 
 //functions
 import { verifyToken } from "@/utils/functions";

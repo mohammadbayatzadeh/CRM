@@ -10,7 +10,7 @@ import styles from "./CostumerDetails.module.css";
 import { useSelector } from "react-redux";
 
 //constants
-import text from "../constants/text";
+import text from "../../constants/text";
 
 function CostumerDetails({ data }) {
   const [form, setForm] = React.useState(null);

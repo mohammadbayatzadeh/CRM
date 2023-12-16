@@ -7,14 +7,14 @@ import axios from "axios";
 import styles from "./AuthPage.module.css";
 
 //comps
-import FormInput from "../elements/FormInput";
-import { Toast } from "../elements/Toast";
+import FormInput from "../../elements/FormInput";
+import { Toast } from "../../elements/Toast";
 
 //redux
 import { useSelector } from "react-redux";
 
 //constants
-import text from "../constants/text";
+import text from "../../constants/text";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");

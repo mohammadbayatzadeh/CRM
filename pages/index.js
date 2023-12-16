@@ -1,5 +1,5 @@
 //temps
-import HomePage from "@/components/templates/HomePage";
+import HomePage from "@/components/templates/dashboard/HomePage";
 
 //model
 import Manager from "@/models/Manager";

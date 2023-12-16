@@ -12,7 +12,7 @@ import styles from "./EditPage.module.css";
 import { useSelector } from "react-redux";
 
 //constants
-import text from "../constants/text";
+import text from "../../constants/text";
 
 function EditPage({ data }) {
   const [form, setForm] = React.useState({});

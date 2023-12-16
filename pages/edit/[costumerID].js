@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 //temps
-import EditPage from "@/components/templates/EditPage";
+import EditPage from "@/components/templates/dashboard/EditPage";
 
 //models
 import Manager from "@/models/Manager";

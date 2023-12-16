@@ -1,11 +1,11 @@
 //comps
-import Card from "../modules/Card";
+import Card from "../../modules/Card";
 
 //redux
 import { useSelector } from "react-redux";
 
 //constants
-import text from "../constants/text";
+import text from "../../constants/text";
 
 function HomePage({ costumers }) {
   const lang = useSelector((state) => state.language.lang);

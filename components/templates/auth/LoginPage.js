@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 //comps
-import { Toast } from "../elements/Toast";
-import FormInput from "../elements/FormInput";
+import { Toast } from "../../elements/Toast";
+import FormInput from "../../elements/FormInput";
 
 //styles
 import styles from "./AuthPage.module.css";
@@ -14,7 +14,7 @@ import styles from "./AuthPage.module.css";
 import { useSelector } from "react-redux";
 
 //constants
-import text from "../constants/text";
+import text from "../../constants/text";
 
 function LoginPage() {
   const [email, setEmail] = useState("");

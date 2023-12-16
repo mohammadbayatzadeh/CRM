@@ -55,6 +55,7 @@ function Layout({ children }) {
       })
       .catch((err) => Toast(err.response.data.message, "error"));
   };
+
   const AuthHandler = () => {
     axios
       .get("/api/manager")
