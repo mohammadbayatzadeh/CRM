@@ -27,7 +27,6 @@ function FormInput({
         type={type}
         onChange={onchange}
         name={name}
-        
         id={name}
         style={{
           direction: rtl ? "rtl" : ltr ? "ltr" : lang === "en" ? "ltr" : "rtl",

@@ -20,7 +20,10 @@ function Form({ form, setForm }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.doubleInput} style={{ direction: "ltr" }}>
+      <div
+        className={styles.doubleInput}
+        style={{ direction: "ltr", columnGap: 7 }}
+      >
         <FormInput
           name="firstName_EN"
           value={form.firstName_EN}
@@ -38,7 +41,10 @@ function Form({ form, setForm }) {
           onchange={(e) => changeHanler(e)}
         />
       </div>
-      <div className={styles.doubleInput} style={{ direction: "ltr" }}>
+      <div
+        className={styles.doubleInput}
+        style={{ direction: "ltr", columnGap: 7 }}
+      >
         <FormInput
           name="lastName_EN"
           value={form.lastName_EN}
@@ -70,7 +76,10 @@ function Form({ form, setForm }) {
         label={text.phone[lang]}
         onchange={(e) => changeHanler(e)}
       />
-      <div className={styles.doubleInput} style={{ direction: "ltr" }}>
+      <div
+        className={styles.doubleInput}
+        style={{ direction: "ltr", columnGap: 7 }}
+      >
         <FormInput
           name="city_EN"
           value={form.city_EN}
