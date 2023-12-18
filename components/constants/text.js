@@ -19,6 +19,7 @@ const text = {
     en: "Next Project | CRM Project ©",
     fa: "پروژه نکست | مدیریت مشتری",
   },
+  number: { en: "no.", fa: "شماره" },
   email: { en: "email", fa: "ایمیل" },
   password: { en: "password", fa: "رمز عبور" },
   delete: { en: "delete", fa: "حذف" },

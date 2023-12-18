@@ -49,7 +49,7 @@ function FormItem({ form, setForm }) {
         products.length > 0 &&
         products.map((product, index) => (
           <div key={index} className={styles.productContainer}>
-            item no. {index + 1}
+            {`${text.item[lang]} ${text.number[lang]} ${index + 1}`}
             <FormInput
               name="name"
               type="text"
