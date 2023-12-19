@@ -11,6 +11,7 @@
   margin-bottom: auto;
   width: 100%;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -19,11 +20,13 @@
   padding: 10px 0;
   margin: 10px 0 50px 0;
 }
+
 .headerSection {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .logo {
   font-size: 2em;
 }
@@ -38,12 +41,18 @@
   border-radius: 7px;
   cursor: pointer;
 }
+
 .button:hover {
   background-color: #09a4fe;
+}
+.icon {
+  font-size: 1em;
+  transform: translateY(3px);
 }
 .none {
   display: none;
 }
+
 .footer {
   width: 100%;
   border-width: 3px;
@@ -54,6 +63,7 @@
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
 }
+
 @media (max-width: 1100px) {
   .body {
     width: 85%;
@@ -69,5 +79,13 @@
   }
   .none {
     display: flex;
+  }
+}
+@media (max-width: 400px) {
+  .welcome {
+    display: none;
+  }
+  .icon {
+    font-size: 2em;
   }
 }

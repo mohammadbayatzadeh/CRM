@@ -15,8 +15,7 @@ import { ENLanguage, FALanguage } from "../redux/language/LanguageAction";
 import { useDispatch, useSelector } from "react-redux";
 
 //icons
-import Sun from "../icons/Sun";
-import Moon from "../icons/Moon";
+import { IoMoon, IoSunny } from "react-icons/io5";
 
 //styles
 import styles from "./Layout.module.css";
@@ -81,12 +80,16 @@ function Layout({ children }) {
             <span style={{ cursor: "pointer" }} onClick={langHandler}>
               ({text.lang[lang]})
             </span>
-            <div className={styles.icon}>
-              <span onClick={themeHandler}>
-                {theme === "dark" ? <Sun /> : <Moon />}
-              </span>
+            <span onClick={themeHandler} className={styles.icon}>
+              {theme === "dark" ? (
+                <IoSunny style={{ color: "yellow" }} />
+              ) : (
+                <IoMoon style={{ color: "black" }} />
+              )}
+            </span>
+            <span className={styles.welcome}>
               {name && ` ${text.welcome[lang]} ${helpers.seperateName(name)}`}
-            </div>
+            </span>
           </div>
           <div className={styles.headerSection}>
             {isLoggedIn ? (
