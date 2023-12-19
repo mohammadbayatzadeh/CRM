@@ -17,17 +17,17 @@ import { useSelector } from "react-redux";
 import text from "../../constants/text";
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const [loading, setLoading] = useState(false);
   const lang = useSelector((state) => state.language.lang);
   const router = useRouter();
 
   const loginHandler = async () => {
     axios
-      .post("/api/auth/login", {
-        email,
-        password,
-      })
+      .post("/api/auth/login", form)
       .then((res) => {
         router.push("/");
         Toast(`${res.data.message}`, "success");
@@ -43,16 +43,16 @@ function LoginPage() {
       <FormInput
         name="email"
         type="email"
-        value={email}
         label={text.email[lang]}
-        onchange={(e) => setEmail(e.target.value)}
+        form={form}
+        setFrom={setForm}
       />
       <FormInput
         name="password"
         type="password"
-        value={password}
         label={text.password[lang]}
-        onchange={(e) => setPassword(e.target.value)}
+        form={form}
+        setFrom={setForm}
       />
       <button onClick={loginHandler} className={styles.save}>
         {text.login[lang]}

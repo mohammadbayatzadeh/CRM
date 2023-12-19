@@ -5,13 +5,17 @@ import styles from "./FormInput.module.css";
 function FormInput({
   name,
   type,
-  value,
+  form,
+  setFrom,
   label,
   rtl = false,
   ltr = false,
-  onchange,
 }) {
   const lang = useSelector((state) => state.language.lang);
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setFrom({ ...form, [name]: value });
+  };
   return (
     <div className={styles.container}>
       <label
@@ -23,9 +27,9 @@ function FormInput({
         {label}
       </label>
       <input
-        value={value}
+        value={form[name]}
         type={type}
-        onChange={onchange}
+        onChange={onChange}
         name={name}
         id={name}
         style={{
