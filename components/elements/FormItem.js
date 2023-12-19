@@ -54,24 +54,24 @@ function FormItem({ form, setForm }) {
               name="name"
               type="text"
               label={text.name[lang]}
-              value={product.name}
-              onchange={(e) => changeHandler(e, index)}
+              form={product}
+              exOnChange={(e) => changeHandler(e, index)}
             />
             <div className={styles.row}>
               <FormInput
                 name="price"
                 type="text"
                 label={text.price[lang]}
-                value={product.price}
-                onchange={(e) => changeHandler(e, index)}
+                form={product}
+                exOnChange={(e) => changeHandler(e, index)}
               />
               <span className={styles.space}></span>
               <FormInput
                 name="qty"
                 type="text"
                 label={text.qty[lang]}
-                value={product.qty}
-                onchange={(e) => changeHandler(e, index)}
+                form={product}
+                exOnChange={(e) => changeHandler(e, index)}
               />
             </div>
             <button

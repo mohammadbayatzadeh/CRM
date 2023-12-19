@@ -7,6 +7,7 @@ function FormInput({
   type,
   form,
   setForm,
+  exOnChange,
   label,
   rtl = false,
   ltr = false,
@@ -29,7 +30,7 @@ function FormInput({
       <input
         value={form[name]}
         type={type}
-        onChange={onChange}
+        onChange={exOnChange ? exOnChange : onChange}
         name={name}
         id={name}
         style={{

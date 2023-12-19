@@ -13,10 +13,6 @@ import styles from "./Form.module.css";
 
 function Form({ form, setForm }) {
   const lang = useSelector((state) => state.language.lang);
-  const changeHanler = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
 
   return (
     <div className={styles.container}>
@@ -26,19 +22,19 @@ function Form({ form, setForm }) {
       >
         <FormInput
           name="firstName_EN"
-          value={form.firstName_EN}
           type="text"
           label="first name*"
           ltr={true}
-          onchange={(e) => changeHanler(e)}
+          form={form}
+          setForm={setForm}
         />
         <FormInput
           name="firstName_FA"
-          value={form.firstName_FA}
           type="text"
           label="نام*"
           rtl={true}
-          onchange={(e) => changeHanler(e)}
+          form={form}
+          setForm={setForm}
         />
       </div>
       <div
@@ -47,34 +43,34 @@ function Form({ form, setForm }) {
       >
         <FormInput
           name="lastName_EN"
-          value={form.lastName_EN}
+          form={form}
+          setForm={setForm}
           type="text"
           label="last name*"
           ltr={true}
-          onchange={(e) => changeHanler(e)}
         />
         <FormInput
           name="lastName_FA"
-          value={form.lastName_FA}
+          form={form}
+          setForm={setForm}
           type="text"
           label="نام خانوادگی*"
           rtl={true}
-          onchange={(e) => changeHanler(e)}
         />
       </div>
       <FormInput
         name="email"
-        value={form.email}
+        form={form}
+        setForm={setForm}
         type="text"
         label={`${text.email[lang]}*`}
-        onchange={(e) => changeHanler(e)}
       />
       <FormInput
         name="phone"
-        value={form.phone}
+        form={form}
+        setForm={setForm}
         type="text"
         label={text.phone[lang]}
-        onchange={(e) => changeHanler(e)}
       />
       <div
         className={styles.doubleInput}
@@ -82,19 +78,19 @@ function Form({ form, setForm }) {
       >
         <FormInput
           name="city_EN"
-          value={form.city_EN}
+          form={form}
+          setForm={setForm}
           type="text"
           label="city"
           ltr={true}
-          onchange={(e) => changeHanler(e)}
         />
         <FormInput
           name="city_FA"
-          value={form.city_FA}
+          form={form}
+          setForm={setForm}
           type="text"
           label="شهر"
           rtl={true}
-          onchange={(e) => changeHanler(e)}
         />
       </div>
       <FormItem form={form} setForm={setForm} />
