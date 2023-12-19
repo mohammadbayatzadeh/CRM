@@ -16,6 +16,10 @@ import { useSelector } from "react-redux";
 //constants
 import text from "../../constants/text";
 
+//spinner
+import { PulseLoader } from "react-spinners";
+import { isFormEmpty } from "@/utils/functions";
+
 function LoginPage() {
   const [form, setForm] = useState({
     email: "",
@@ -26,6 +30,10 @@ function LoginPage() {
   const router = useRouter();
 
   const loginHandler = async () => {
+    if (isFormEmpty(form)) {
+      return Toast("please fill all inputs", "error");
+    }
+    setLoading(true);
     axios
       .post("/api/auth/login", form)
       .then((res) => {
@@ -34,7 +42,8 @@ function LoginPage() {
       })
       .catch((err) => {
         Toast(`${err.response.data.message}`, "error");
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -55,7 +64,7 @@ function LoginPage() {
         setFrom={setForm}
       />
       <button onClick={loginHandler} className={styles.save}>
-        {text.login[lang]}
+        {loading ? <PulseLoader color="green" /> : text.login[lang]}
       </button>
       <p>
         {text.havent_account[lang]}?{" "}

@@ -1,9 +1,17 @@
 const { hash, compare } = require("bcryptjs");
 import { verify } from "jsonwebtoken";
 
-const seperateName = (email) => {
-  const array = email.split("@");
-  return array[0];
+const helpers = {
+  seperateName: (email) => {
+    const array = email.split("@");
+    return array[0];
+  },
+  isFormEmpty: (form) => {
+    for (const key of Object.keys(form)) {
+      if (!form[key].trim()) return true;
+    }
+    return false;
+  },
 };
 
 const hashPassword = async (pass) => {
@@ -18,7 +26,6 @@ const comparePassword = async (pass, hashedPassword) => {
 
 const verifyToken = (token) => {
   const secretKey = process.env.SECRET_KEY;
-
   try {
     const result = verify(token, secretKey);
     return result;
@@ -27,4 +34,4 @@ const verifyToken = (token) => {
     return false;
   }
 };
-export { hashPassword, comparePassword, verifyToken, seperateName };
+export { hashPassword, comparePassword, verifyToken, helpers };
