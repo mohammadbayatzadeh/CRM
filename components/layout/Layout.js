@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Toast } from "../elements/Toast";
 
 //funs
-import { seperateName } from "@/utils/functions";
+import { helpers } from "@/utils/functions";
 
 //redux
 import { darkMode, lightMode } from "../redux/theme/themeAction";
@@ -85,7 +85,7 @@ function Layout({ children }) {
               <span onClick={themeHandler}>
                 {theme === "dark" ? <Sun /> : <Moon />}
               </span>
-              {name && ` ${text.welcome[lang]} ${seperateName(name)}`}
+              {name && ` ${text.welcome[lang]} ${helpers.seperateName(name)}`}
             </div>
           </div>
           <div className={styles.headerSection}>

@@ -18,7 +18,9 @@ import text from "../../constants/text";
 
 //spinner
 import { PulseLoader } from "react-spinners";
-import { isFormEmpty } from "@/utils/functions";
+
+//helpers
+import { helpers } from "@/utils/functions";
 
 function LoginPage() {
   const [form, setForm] = useState({
@@ -30,7 +32,7 @@ function LoginPage() {
   const router = useRouter();
 
   const loginHandler = async () => {
-    if (isFormEmpty(form)) {
+    if (helpers.isFormEmpty(form)) {
       return Toast("please fill all inputs", "error");
     }
     setLoading(true);
@@ -54,14 +56,14 @@ function LoginPage() {
         type="email"
         label={text.email[lang]}
         form={form}
-        setFrom={setForm}
+        setForm={setForm}
       />
       <FormInput
         name="password"
         type="password"
         label={text.password[lang]}
         form={form}
-        setFrom={setForm}
+        setForm={setForm}
       />
       <button onClick={loginHandler} className={styles.save}>
         {loading ? <PulseLoader color="green" /> : text.login[lang]}

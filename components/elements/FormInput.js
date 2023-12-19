@@ -6,7 +6,7 @@ function FormInput({
   name,
   type,
   form,
-  setFrom,
+  setForm,
   label,
   rtl = false,
   ltr = false,
@@ -14,7 +14,7 @@ function FormInput({
   const lang = useSelector((state) => state.language.lang);
   const onChange = (e) => {
     const { name, value } = e.target;
-    setFrom({ ...form, [name]: value });
+    setForm({ ...form, [name]: value });
   };
   return (
     <div className={styles.container}>

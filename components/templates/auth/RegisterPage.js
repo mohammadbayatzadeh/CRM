@@ -15,26 +15,35 @@ import { useSelector } from "react-redux";
 
 //constants
 import text from "../../constants/text";
+import { helpers } from "@/utils/functions";
+
+//spinner
+import { PulseLoader } from "react-spinners";
 
 function RegisterPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const [loading, setLoading] = useState(false);
   const lang = useSelector((state) => state.language.lang);
   const router = useRouter();
 
   const saveHandler = async () => {
+    if (helpers.isFormEmpty(form)) {
+      return Toast("please fill all inputs", "error");
+    }
+    setLoading(true);
     axios
-      .post("/api/auth/register", {
-        email,
-        password,
-      })
+      .post("/api/auth/register", form)
       .then((res) => {
         Toast(`${res.data.message}`, "success");
         router.push("/");
       })
       .catch((err) => {
         Toast(`${err.response.data.message}`, "error");
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -43,19 +52,19 @@ function RegisterPage() {
       <FormInput
         name="email"
         type="email"
-        value={email}
         label={text.email[lang]}
-        onchange={(e) => setEmail(e.target.value)}
+        form={form}
+        setForm={setForm}
       />
       <FormInput
         name="password"
         type="password"
-        value={password}
         label={text.password[lang]}
-        onchange={(e) => setPassword(e.target.value)}
+        form={form}
+        setForm={setForm}
       />
       <button onClick={saveHandler} className={styles.save}>
-        {text.register[lang]}
+        {loading ? <PulseLoader color="green" /> : text.register[lang]}
       </button>
       <p>
         {text.have_account[lang]}? <Link href="/login">{text.login[lang]}</Link>
