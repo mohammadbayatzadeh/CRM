@@ -40,14 +40,16 @@
   background-color: #0f6292;
   border-radius: 7px;
   cursor: pointer;
+  transition: all .5s ease;
 }
 
 .button:hover {
   background-color: #09a4fe;
 }
 .icon {
-  font-size: 1em;
-  transform: translateY(3px);
+  font-size: 1.5em;
+  transform: translateY(5px);
+  cursor: pointer;
 }
 .none {
   display: none;
