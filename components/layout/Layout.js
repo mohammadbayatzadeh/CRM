@@ -10,8 +10,8 @@ import { Toast } from "../elements/Toast";
 import { helpers } from "@/utils/functions";
 
 //redux
-import { darkMode, lightMode } from "../redux/theme/themeAction";
-import { ENLanguage, FALanguage } from "../redux/language/LanguageAction";
+import { darkMode, lightMode } from "../redux/theme/ThemeSlice";
+import { ENLanguage, FALanguage } from "../redux/language/LangSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 //icons
@@ -31,7 +31,7 @@ function Layout({ children }) {
   const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
   const router = useRouter();
-
+  
   const themeHandler = () => {
     theme === "dark" ? dispatch(lightMode()) : dispatch(darkMode());
   };
