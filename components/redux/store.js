@@ -1,12 +1,7 @@
-import { combineReducers, createStore } from "redux";
-import { themeReducer } from "./theme/themeReducer";
-import LanguageReducer from "./language/LanguageReducer";
-
-const RootReducer = combineReducers({
-  theme: themeReducer,
-  language: LanguageReducer,
+import { configureStore } from "@reduxjs/toolkit";
+import LangSlice from "./language/LangSlice";
+const store = configureStore({
+  lange: LangSlice,
 });
-
-const store = createStore(RootReducer);
 
 export { store };
