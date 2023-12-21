@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const LangSlice = createSlice({
-  name: "theme",
+  name: "lang",
   initialState,
   reducers: {
     ENLanguage: () => {
