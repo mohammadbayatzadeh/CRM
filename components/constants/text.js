@@ -35,7 +35,7 @@ const text = {
   city: { en: "city", fa: "شهر" },
   phone: { en: "phone", fa: "تلقن" },
   purchased_items: { en: "purchased items", fa: "موارد خریداری شده " },
-  item: { en: "item", fa: "مورد" },
+  item: { en: "item", fa: "آیتم" },
   price: { en: "price", fa: "قیمت" },
   product: { en: "product", fa: "محصول" },
   updated_at: { en: "updated at", fa: "بروزرسانی در" },
