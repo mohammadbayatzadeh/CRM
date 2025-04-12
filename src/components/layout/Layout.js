@@ -1,28 +1,18 @@
+import { buttonVariants } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { Irancell } from "@/src/utils/Fonts";
+import { helpers } from "@/src/utils/functions";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
-//comps
-import { Toast } from "../elements/Toast";
-
-//funs
-import { helpers } from "@/src/utils/functions";
-
-//redux
+import { IoMoon, IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
+import text from "../constants/text";
+import { Toast } from "../elements/Toast";
 import { ENLanguage, FALanguage } from "../redux/language/LangSlice";
 import { darkMode, lightMode } from "../redux/theme/ThemeSlice";
-
-//icons
-import { IoMoon, IoSunny } from "react-icons/io5";
-
-//styles
-import styles from "./Layout.module.css";
-
-//constants
-import { Irancell } from "@/src/utils/Fonts";
-import text from "../constants/text";
 
 function Layout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -70,50 +60,60 @@ function Layout({ children }) {
       dir={lang === "en" ? "ltr" : "rtl"}
       className={`${Irancell.className} ${
         theme === "dark" ? "dark" : "light"
-      } bg-background text-foreground`}
+      } bg-background text-foreground py-5 h-[100dvh] overflow-y-scroll`}
     >
-      <div className="mx-auto w-[70dvw] min-h-screen flex flex-col items-start justify-center bg-background text-foreground">
-        <header className={styles.header}>
-          <div className={styles.headerSection}>
-            <Link href="/" className={styles.logo}>
+      <div className="mx-auto w-[95dvw] md:w-[85dvw] lg:w-[70dvw] h-full flex flex-col items-center justify-between  bg-background text-foreground">
+        <header className="flex justify-between items-center w-full py-2  mb-12">
+          <div className="flex items-center gap-2">
+            <Link href="/" className="text-3xl">
               {text.logo[lang]}
             </Link>
             <span style={{ cursor: "pointer" }} onClick={langHandler}>
               ({text.lang[lang]})
             </span>
-            <span onClick={themeHandler} className={styles.icon}>
+            <span
+              onClick={themeHandler}
+              className="transform-y-2 cursor-pointer text-2xl"
+            >
               {theme === "dark" ? (
                 <IoSunny style={{ color: "yellow" }} />
               ) : (
                 <IoMoon style={{ color: "black" }} />
               )}
             </span>
-            <span className={styles.welcome}>
+            <span>
               {name && ` ${text.welcome[lang]} ${helpers.seperateName(name)}`}
             </span>
           </div>
-          <div className={styles.headerSection}>
+          <div className="flex gap-2">
             {isLoggedIn ? (
               <>
                 {router.pathname === "/add-costumer" || (
-                  <Link className={styles.button} href="/add-costumer">
-                    <p className={styles.none}>+</p>
-                    <p className={styles.text}>{text.add_costumer[lang]}</p>
+                  <Link
+                    href="/add-costumer"
+                    className={buttonVariants({ variant: "outline" })}
+                  >
+                    <p className="hidden">+</p>
+                    <p>{text.add_costumer[lang]}</p>
                   </Link>
                 )}
-                <button onClick={logOutHandler} className={styles.button}>
-                  {text.logout[lang]}
-                </button>
+                <button onClick={logOutHandler}>{text.logout[lang]}</button>
               </>
             ) : (
               <>
                 {router.pathname === "/login" || (
-                  <Link className={styles.button} href="/login">
+                  <Link
+                    href="/login"
+                    className={buttonVariants({ variant: "outline" })}
+                  >
                     {text.login[lang]}
                   </Link>
                 )}
                 {router.pathname === "/register" || (
-                  <Link className={styles.button} href="/register">
+                  <Link
+                    href="/register"
+                    className={buttonVariants({ variant: "outline" })}
+                  >
                     {text.register[lang]}
                   </Link>
                 )}
@@ -121,12 +121,10 @@ function Layout({ children }) {
             )}
           </div>
         </header>
-        <div className="mb-auto w-full" id={[theme]}>
-          {children}
-        </div>
-        <footer className={styles.footer}>
+        <div className=" w-full mb-auto">{children}</div>
+        <Card className={cn("w-full text-center")}>
           <h5>{text.footer[lang]}</h5>
-        </footer>
+        </Card>
       </div>
     </div>
   );
