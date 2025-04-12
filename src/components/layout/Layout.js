@@ -9,8 +9,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 import text from "../constants/text";
-import { Toast } from "../elements/Toast";
 import { ENLanguage, FALanguage } from "../redux/language/LangSlice";
 import { darkMode, lightMode } from "../redux/theme/ThemeSlice";
 
@@ -39,10 +39,10 @@ function Layout({ children }) {
       .then((res) => {
         setName("");
         AuthHandler();
-        Toast(res.data.message, "success");
+        toast(res.data.message);
         router.push("/login");
       })
-      .catch((err) => Toast(err.response.data.message, "error"));
+      .catch((err) => toast(err.response.data.message));
   };
 
   const AuthHandler = () => {
@@ -97,7 +97,7 @@ function Layout({ children }) {
                     <p>{text.add_costumer[lang]}</p>
                   </Link>
                 )}
-                <Button onClick={logOutHandler} >{text.logout[lang]}</Button>
+                <Button onClick={logOutHandler}>{text.logout[lang]}</Button>
               </>
             ) : (
               <>

@@ -1,11 +1,11 @@
+import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "sonner";
 import text from "../../constants/text";
-import { Toast } from "../../elements/Toast";
 import Form from "../../modules/Form";
-import { Button } from "@/components/ui/button";
 
 function AddCostumerPage() {
   const lang = useSelector((state) => state.language.lang);
@@ -51,7 +51,7 @@ function AddCostumerPage() {
       (await axios
         .post("/api/costumer", { data: form })
         .then(() => {
-          Toast(`${form.firstName_EN} createad`, "success");
+          toast(`${form.firstName_EN} createad`);
           router.push("/");
         })
         .catch());

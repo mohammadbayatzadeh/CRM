@@ -1,18 +1,13 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
 import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-//styles
 import styles from "./Card.module.css";
 
-//elements
-import { Toast } from "../elements/Toast";
-
-//constants
 import text from "../constants/text";
 
-//redux
 import { useSelector } from "react-redux";
+import { toast } from "sonner";
 
 function Card({
   firstName_EN,
@@ -29,7 +24,7 @@ function Card({
       .delete(`/api/costumer/${_id}`)
       .then((res) => {
         router.replace("/");
-        Toast(`${firstName_EN} deleted`, "success");
+        toast(`${firstName_EN} deleted`);
       })
       .catch((err) => {});
   };
