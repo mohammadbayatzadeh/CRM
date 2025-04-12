@@ -1,24 +1,16 @@
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Spinner } from "@/components/ui/spinner";
+import { cn } from "@/lib/utils";
+import { helpers } from "@/src/utils/functions";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
-//comps
+import { useSelector } from "react-redux";
+import text from "../../constants/text";
 import FormInput from "../../elements/FormInput";
 import { Toast } from "../../elements/Toast";
-
-//redux
-import { useSelector } from "react-redux";
-
-//constants
-import { helpers } from "@/src/utils/functions";
-import text from "../../constants/text";
-
-//spinner
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { PulseLoader } from "react-spinners";
 
 function RegisterPage() {
   const [form, setForm] = useState({
@@ -65,11 +57,18 @@ function RegisterPage() {
         form={form}
         setForm={setForm}
       />
-      <Button onClick={saveHandler}>
-        {loading ? <PulseLoader color="green" /> : text.register[lang]}
+      <Button
+        onClick={saveHandler}
+        className={buttonVariants({ variant: "outline" })}
+      >
+        {loading ? (
+          <Spinner />
+        ) : (
+          <span className="text-foreground">{text.register[lang]}</span>
+        )}
       </Button>
       <p>
-        {text.have_account[lang]}? <Link href="/login">{text.login[lang]}</Link>
+        {text.have_account[lang]}? <Link href="/login" className="px-1 !text-green-600">{text.login[lang]}</Link>
       </p>
     </Card>
   );
