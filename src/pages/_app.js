@@ -1,25 +1,17 @@
-import Head from "next/head";
-
-//layout
+import { Toaster } from "@/components/ui/sonner";
 import Layout from "@/src/components/layout/Layout";
-
-//comps
-import { ToastContainer } from "react-toastify";
-
-//redux
 import { store } from "@/src/components/redux/store";
+import Head from "next/head";
 import NextTopLoader from "nextjs-toploader";
 import { Provider } from "react-redux";
-
-//styles
 import "../styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <ToastContainer />
       <Layout>
         <NextTopLoader color="red" />
+        <Toaster />
         <Head>
           <title>CRM panel</title>
           <meta name="description" content="CRM panel" />

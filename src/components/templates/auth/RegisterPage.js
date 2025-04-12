@@ -1,6 +1,5 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 import { helpers } from "@/src/utils/functions";
 import axios from "axios";
@@ -8,9 +7,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "sonner";
 import text from "../../constants/text";
 import FormInput from "../../elements/FormInput";
-import { Toast } from "../../elements/Toast";
+import { Loader } from "../../elements/Loader";
 
 function RegisterPage() {
   const [form, setForm] = useState({
@@ -23,17 +23,17 @@ function RegisterPage() {
 
   const saveHandler = async () => {
     if (helpers.isFormEmpty(form)) {
-      return Toast("please fill all inputs", "error");
+      return toast("please fill all inputs");
     }
     setLoading(true);
     axios
       .post("/api/auth/register", form)
       .then((res) => {
-        Toast(`${res.data.message}`, "success");
+        toast(`${res.data.message}`);
         router.push("/");
       })
       .catch((err) => {
-        Toast(`${err.response.data.message}`, "error");
+        toast(`${err.response.data.message}`);
       })
       .finally(() => setLoading(false));
   };
@@ -62,13 +62,16 @@ function RegisterPage() {
         className={buttonVariants({ variant: "outline" })}
       >
         {loading ? (
-          <Spinner />
+          <Loader />
         ) : (
           <span className="text-foreground">{text.register[lang]}</span>
         )}
       </Button>
       <p>
-        {text.have_account[lang]}? <Link href="/login" className="px-1 !text-green-600">{text.login[lang]}</Link>
+        {text.have_account[lang]}?{" "}
+        <Link href="/login" className="px-1 !text-green-600">
+          {text.login[lang]}
+        </Link>
       </p>
     </Card>
   );

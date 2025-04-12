@@ -1,19 +1,11 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
-
-//styles
-import styles from "./AddCostumerPage.module.css";
-
-//comps
-import Form from "../../modules/Form";
-import { Toast } from "../../elements/Toast";
-
-//redux
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-
-//constants
 import text from "../../constants/text";
+import { Toast } from "../../elements/Toast";
+import Form from "../../modules/Form";
+import { Button } from "@/components/ui/button";
 
 function AddCostumerPage() {
   const lang = useSelector((state) => state.language.lang);
@@ -66,16 +58,14 @@ function AddCostumerPage() {
   };
 
   return (
-    <div className={styles.container}>
-      <h4>{text.add_costumer[lang]}</h4>
+    <div className="w-full flex-col flex mb-2">
+      <h1 className="text-2xl">{text.add_costumer[lang]}</h1>
       <Form form={form} setForm={setForm} />
-      <div className={styles.buttons}>
-        <button onClick={cancelHandler} className={styles.cancel}>
+      <div className="flex w-full justify-between">
+        <Button onClick={cancelHandler} variant="destructive">
           {text.delete[lang]}
-        </button>
-        <button onClick={saveHandler} className={styles.save}>
-          {text.save[lang]}
-        </button>
+        </Button>
+        <Button onClick={saveHandler}>{text.save[lang]}</Button>
       </div>
     </div>
   );

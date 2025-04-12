@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Irancell } from "@/src/utils/Fonts";
@@ -97,7 +97,7 @@ function Layout({ children }) {
                     <p>{text.add_costumer[lang]}</p>
                   </Link>
                 )}
-                <button onClick={logOutHandler}>{text.logout[lang]}</button>
+                <Button onClick={logOutHandler} >{text.logout[lang]}</Button>
               </>
             ) : (
               <>

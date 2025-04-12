@@ -7,10 +7,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "sonner";
 import text from "../../constants/text";
 import FormInput from "../../elements/FormInput";
 import { Loader } from "../../elements/Loader";
-import { Toast } from "../../elements/Toast";
 
 function LoginPage() {
   const [form, setForm] = useState({
@@ -23,17 +23,17 @@ function LoginPage() {
 
   const loginHandler = async () => {
     if (helpers.isFormEmpty(form)) {
-      return Toast("please fill all inputs", "error");
+      return toast("please fill all inputs");
     }
     setLoading(true);
     axios
       .post("/api/auth/login", form)
       .then((res) => {
         router.push("/");
-        Toast(`${res.data.message}`, "success");
+        toast(`${res.data.message}`);
       })
       .catch((err) => {
-        Toast(`${err.response.data.message}`, "error");
+        toast(`${err.response.data.message}`);
       })
       .finally(() => setLoading(false));
   };

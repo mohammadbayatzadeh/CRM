@@ -1,23 +1,15 @@
-//comps
+import { useSelector } from "react-redux";
+import text from "../constants/text";
 import FormInput from "../elements/FormInput";
 import FormItem from "../elements/FormItem";
-
-//constants
-import text from "../constants/text";
-
-//redux
-import { useSelector } from "react-redux";
-
-//styles
-import styles from "./Form.module.css";
 
 function Form({ form, setForm }) {
   const lang = useSelector((state) => state.language.lang);
 
   return (
-    <div className={styles.container}>
+    <div className="flex flex-col gap-3">
       <div
-        className={styles.doubleInput}
+        className="flex items-center"
         style={{ direction: "ltr", columnGap: 7 }}
       >
         <FormInput
@@ -38,7 +30,7 @@ function Form({ form, setForm }) {
         />
       </div>
       <div
-        className={styles.doubleInput}
+        className="flex items-center"
         style={{ direction: "ltr", columnGap: 7 }}
       >
         <FormInput
@@ -73,7 +65,7 @@ function Form({ form, setForm }) {
         label={text.phone[lang]}
       />
       <div
-        className={styles.doubleInput}
+        className="flex items-center"
         style={{ direction: "ltr", columnGap: 7 }}
       >
         <FormInput

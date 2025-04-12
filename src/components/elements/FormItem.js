@@ -1,13 +1,9 @@
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { useSelector } from "react-redux";
-
-//styles
-import styles from "./FormItem.module.css";
-
-//comps
-import FormInput from "./FormInput";
-
-//constants
 import text from "../constants/text";
+import FormInput from "./FormInput";
 
 function FormItem({ form, setForm }) {
   const { products } = form;
@@ -43,12 +39,12 @@ function FormItem({ form, setForm }) {
   };
 
   return (
-    <div className={styles.container}>
-      <h3>{text.purchased_items[lang]}</h3>
+    <div className={cn("my-2")}>
+      <h3 className="py-2">{text.purchased_items[lang]}</h3>
       {products &&
         products.length > 0 &&
         products.map((product, index) => (
-          <div key={index} className={styles.productContainer}>
+          <Card key={index} className={cn("p-5 mb-2")}>
             {`${text.item[lang]} ${text.number[lang]} ${index + 1}`}
             <FormInput
               name="name"
@@ -57,7 +53,7 @@ function FormItem({ form, setForm }) {
               form={product}
               exOnChange={(e) => changeHandler(e, index)}
             />
-            <div className={styles.row}>
+            <div className="flex gap-2">
               <FormInput
                 name="price"
                 type="text"
@@ -65,7 +61,6 @@ function FormItem({ form, setForm }) {
                 form={product}
                 exOnChange={(e) => changeHandler(e, index)}
               />
-              <span className={styles.space}></span>
               <FormInput
                 name="qty"
                 type="text"
@@ -74,17 +69,17 @@ function FormItem({ form, setForm }) {
                 exOnChange={(e) => changeHandler(e, index)}
               />
             </div>
-            <button
-              className={styles.remove}
-              onClick={() => removeHandler(index)}
-            >
+            <Button variant="destructive" onClick={() => removeHandler(index)}>
               {text.remove[lang]} {text.item[lang]}
-            </button>
-          </div>
+            </Button>
+          </Card>
         ))}
-      <button className={styles.add} onClick={() => addHandler()}>
+      <Button
+        onClick={() => addHandler()}
+        className={cn("text-center w-full py-8")}
+      >
         {text.add[lang]} {text.item[lang]}
-      </button>
+      </Button>
     </div>
   );
 }

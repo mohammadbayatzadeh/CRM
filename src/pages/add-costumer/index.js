@@ -1,10 +1,6 @@
-import Head from "next/head";
-
-//temps
 import AddCostumerPage from "@/src/components/templates/dashboard/AddCostumerPage";
-
-//functions
 import { verifyToken } from "@/src/utils/functions";
+import Head from "next/head";
 
 function index() {
   return (
