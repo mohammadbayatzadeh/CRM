@@ -3,9 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-//styles
-import styles from "./AuthPage.module.css";
-
 //comps
 import FormInput from "../../elements/FormInput";
 import { Toast } from "../../elements/Toast";
@@ -18,6 +15,9 @@ import { helpers } from "@/src/utils/functions";
 import text from "../../constants/text";
 
 //spinner
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { PulseLoader } from "react-spinners";
 
 function RegisterPage() {
@@ -47,7 +47,9 @@ function RegisterPage() {
   };
 
   return (
-    <div className={styles.container}>
+    <Card
+      className={cn("w-full md:w-4/5 mx-auto p-5 flex flex-col items-center")}
+    >
       <h3>{text.register_form[lang]}</h3>
       <FormInput
         name="email"
@@ -63,13 +65,13 @@ function RegisterPage() {
         form={form}
         setForm={setForm}
       />
-      <button onClick={saveHandler} className={styles.save}>
+      <Button onClick={saveHandler}>
         {loading ? <PulseLoader color="green" /> : text.register[lang]}
-      </button>
+      </Button>
       <p>
         {text.have_account[lang]}? <Link href="/login">{text.login[lang]}</Link>
       </p>
-    </div>
+    </Card>
   );
 }
 
