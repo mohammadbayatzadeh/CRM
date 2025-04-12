@@ -1,21 +1,20 @@
-import Head from "next/head";
-
-//temps
 import EditPage from "@/src/components/templates/dashboard/EditPage";
-
-//models
 import Manager from "@/src/models/Manager";
-
-//functions
 import { verifyToken } from "@/src/utils/functions";
+import Head from "next/head";
+import { useSelector } from "react-redux";
 
 function edit({ data }) {
   const costumerData = JSON.parse(data);
+  const lang = useSelector((state) => state.language.lang);
+
   return (
     <>
       <Head>
         <title>
-          {costumerData.firstName_EN} {costumerData.lastName_EN} panel
+          {lang == "en"
+            ? ` Edit ${costumerData.firstName_EN} ${costumerData.lastName_EN}`
+            : ` ویرایش ${costumerData.firstName_FA} ${costumerData.lastName_FA}`}
         </title>
       </Head>
       <EditPage data={costumerData} />

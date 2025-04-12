@@ -1,13 +1,7 @@
-import Head from "next/head";
-
-//temps
 import CostumerDetails from "@/src/components/templates/dashboard/CostumerDetails";
-
-//models
 import Manager from "@/src/models/Manager";
-
-//functions
 import { verifyToken } from "@/src/utils/functions";
+import Head from "next/head";
 
 function CostumerDetail({ data }) {
   const costumerData = JSON.parse(data);
