@@ -67,11 +67,12 @@ function Layout({ children }) {
 
   return (
     <div
-      id={[theme]}
       dir={lang === "en" ? "ltr" : "rtl"}
-      className={Irancell.className}
+      className={`${Irancell.className} ${
+        theme === "dark" ? "dark" : "light"
+      } bg-background text-foreground`}
     >
-      <div className={styles.body}>
+      <div className="mx-auto w-[70dvw] min-h-screen flex flex-col items-start justify-center bg-background text-foreground">
         <header className={styles.header}>
           <div className={styles.headerSection}>
             <Link href="/" className={styles.logo}>
@@ -120,7 +121,7 @@ function Layout({ children }) {
             )}
           </div>
         </header>
-        <div className={styles.container} id={[theme]}>
+        <div className="mb-auto w-full" id={[theme]}>
           {children}
         </div>
         <footer className={styles.footer}>

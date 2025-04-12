@@ -12,48 +12,9 @@ button {
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 a {
   color: inherit;
   text-decoration: none;
-}
-
-#dark {
-  background-color: black !important;
-  color: white !important;
-  border-color: white !important;
-  transition: all 0.2s ease;
-}
-#dark input {
-  border-color: white !important;
-  color: white;
-}
-#dark button {
-  color: white;
-}
-
-#light {
-  background-color: white !important;
-  color: black !important;
-  border-color: black !important;
-  transition: all 0.2s ease;
-}
-
-#light input {
-  border-color: black !important;
-  color: black;
-}
-#light button {
-  color: black;
-}
-
-input , button {
-  font-family: inherit;
 }
 
 @theme inline {

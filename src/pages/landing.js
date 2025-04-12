@@ -13,7 +13,9 @@ function Home() {
     <>
       <h2>{text.welcome[lang]}</h2>
       <br />
-      <h3 className="text-xl">{text.homePage_text[lang]}</h3>
+      <h3 className="">
+        {text.homePage_text[lang]}
+      </h3>
     </>
   );
 }
