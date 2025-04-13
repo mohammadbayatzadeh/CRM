@@ -60,7 +60,7 @@ function Layout({ children }) {
       dir={lang === "en" ? "ltr" : "rtl"}
       className={`${Irancell.className} ${
         theme === "dark" ? "dark" : "light"
-      } bg-background text-foreground py-5 h-[100dvh] overflow-y-scroll`}
+      } bg-background text-foreground py-5 h-[100dvh] min-h-[100dvh] overflow-y-scroll`}
     >
       <div className="mx-auto w-[95dvw] md:w-[85dvw] lg:w-[70dvw] h-full flex flex-col items-center justify-between  bg-background text-foreground">
         <header className="flex justify-between items-center w-full py-2  mb-12">
@@ -121,8 +121,8 @@ function Layout({ children }) {
             )}
           </div>
         </header>
-        <div className=" w-full mb-auto">{children}</div>
-        <Card className={cn("w-full text-center")}>
+        <div className=" w-full !mb-auto">{children}</div>
+        <Card className={cn("w-full text-center ")}>
           <h5>{text.footer[lang]}</h5>
         </Card>
       </div>

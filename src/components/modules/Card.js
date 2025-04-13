@@ -31,13 +31,15 @@ function Card({
 
   return (
     <CnCard
-      className={cn("w-full  justify-between px-5 flex flex-row items-center")}
+      className={cn(
+        "w-full  justify-between px-5 flex flex-row items-center mb-2"
+      )}
     >
       <div className="gap-5 justify-between  flex flex-row items-center">
         <span>{lang === "en" ? firstName_EN : firstName_FA}</span>
         <span>{lang === "en" ? lastName_EN : lastName_FA}</span>
         <span>{email}</span>
-        <span>{birthday}</span>
+        <span>{new Date(birthday).toLocaleDateString(lang || "en")}</span>
       </div>
       <div className="flex gap-1">
         <Button
