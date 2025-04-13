@@ -11,6 +11,7 @@ const text = {
   have_account: { en: "have Account", fa: "اکانت دارید" },
   havent_account: { en: " not have Account", fa: "اکانت ندارید" },
   homePage_title: { en: "Welcome to CRM Panel", fa: "به پنل مدیریت خوش آمدید" },
+  pickDate: { en: "birthday", fa: "تاریخ تولد" },
   homePage_text: {
     en: "To manage your costumers, please register or login to your account.",
     fa: "برای مدیریت مشتریانتان ، لطفا ثبت نام یا ورود کنید",

@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { toast } from "sonner";
 import text from "../../constants/text";
 import Form from "../../modules/Form";
 
@@ -16,6 +14,7 @@ function AddCostumerPage() {
     lastName_FA: "",
     email: "",
     phone: "",
+    birthday: "",
     city_EN: "",
     city_FA: "",
     products: [],
@@ -31,6 +30,7 @@ function AddCostumerPage() {
       lastName_FA: "",
       email: "",
       phone: "",
+      birthday: "",
       city_EN: "",
       city_FA: "",
       products: [],
@@ -39,22 +39,24 @@ function AddCostumerPage() {
   };
 
   const saveHandler = async () => {
-    form.firstName_EN &&
-      form.firstName_FA &&
-      form.lastName_EN &&
-      form.lastName_FA &&
-      form.city_FA &&
-      form.city_EN &&
-      form.email &&
-      form.products[0] &&
-      form.products[0].name &&
-      (await axios
-        .post("/api/costumer", { data: form })
-        .then(() => {
-          toast(`${form.firstName_EN} createad`);
-          router.push("/");
-        })
-        .catch());
+    console.log(form);
+    // form.firstName_EN &&
+    //   form.firstName_FA &&
+    //   form.lastName_EN &&
+    //   form.lastName_FA &&
+    //   form.city_FA &&
+    //   form.city_EN &&
+    //   form.email &&
+    //   form.birthday &&
+    //   form.products[0] &&
+    //   form.products[0].name &&
+    //   (await axios
+    //     .post("/api/costumer", { data: form })
+    //     .then(() => {
+    //       toast(`${form.firstName_EN} createad`);
+    //       router.push("/");
+    //     })
+    //     .catch());
   };
 
   return (

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import text from "../constants/text";
+import FormDate from "../elements/FormDate";
 import FormInput from "../elements/FormInput";
 import FormItem from "../elements/FormItem";
 
@@ -50,6 +51,7 @@ function Form({ form, setForm }) {
           rtl={true}
         />
       </div>
+      <FormDate form={form} setForm={setForm} />
       <FormInput
         name="email"
         form={form}
