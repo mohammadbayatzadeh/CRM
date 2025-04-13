@@ -17,6 +17,7 @@ import text from "../../constants/text";
 function EditPage({ data }) {
   const [form, setForm] = React.useState({});
   const lang = useSelector((state) => state.language.lang);
+  console.log(data)
 
   const router = useRouter();
 
@@ -42,6 +43,7 @@ function EditPage({ data }) {
   };
 
   const saveHandler = async () => {
+    console.log(form);
     await axios
       .patch(`/api/costumer/${costumerID}`, { data: form })
       .then(() => {

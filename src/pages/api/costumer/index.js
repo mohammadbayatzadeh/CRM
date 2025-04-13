@@ -20,7 +20,8 @@ export default async function handler(req, res) {
       !data.lastName_EN ||
       !data.firstName_FA ||
       !data.lastName_FA ||
-      !data.email
+      !data.email ||
+      !data.birthday
     ) {
       return res
         .status(400)
@@ -44,6 +45,7 @@ export default async function handler(req, res) {
         .status(201)
         .json({ status: "Success", message: "data created", data: manager });
     } catch (err) {
+      console.log(err);
       res
         .status(500)
         .json({ status: "Failed", message: "error in storing to DB" });

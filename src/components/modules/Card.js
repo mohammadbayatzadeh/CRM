@@ -14,6 +14,7 @@ function Card({
   lastName_EN,
   lastName_FA,
   email,
+  birthday,
   _id,
 }) {
   const router = useRouter();
@@ -36,6 +37,7 @@ function Card({
         <span>{lang === "en" ? firstName_EN : firstName_FA}</span>
         <span>{lang === "en" ? lastName_EN : lastName_FA}</span>
         <span>{email}</span>
+        <span>{birthday}</span>
       </div>
       <div className="flex gap-1">
         <Button

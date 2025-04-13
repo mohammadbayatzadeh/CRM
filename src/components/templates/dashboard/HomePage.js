@@ -5,6 +5,7 @@ import Card from "../../modules/Card";
 
 function HomePage({ costumers }) {
   const lang = useSelector((state) => state.language.lang);
+  console.log(costumers)
   return (
     <>
       {costumers.length ? (

@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { helpers } from "@/src/utils/functions";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "sonner";
 import text from "../../constants/text";
 import Form from "../../modules/Form";
 
@@ -39,23 +42,16 @@ function AddCostumerPage() {
   };
 
   const saveHandler = async () => {
-    form.firstName_EN &&
-      form.firstName_FA &&
-      form.lastName_EN &&
-      form.lastName_FA &&
-      form.city_FA &&
-      form.city_EN &&
-      form.email &&
-      form.birthday &&
-      form.products[0] &&
-      form.products[0].name &&
-      (await axios
+    if (!helpers.isFormEmpty(form)) {
+      axios
         .post("/api/costumer", { data: form })
         .then(() => {
           toast(`${form.firstName_EN} createad`);
           router.push("/");
         })
-        .catch((err) => console.log(err)));
+        .catch((err) => console.log(err));
+    } else {
+    }
   };
 
   return (

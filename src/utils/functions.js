@@ -8,7 +8,7 @@ const helpers = {
   },
   isFormEmpty: (form) => {
     for (const key of Object.keys(form)) {
-      if (!form[key].trim()) return true;
+      if (typeof form[key] == 'string' && !form[key].trim()) return true;
     }
     return false;
   },
