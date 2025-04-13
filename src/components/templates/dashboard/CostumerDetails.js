@@ -1,31 +1,33 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import text from "../../constants/text";
-import styles from "./CostumerDetails.module.css";
+import { Loader } from "../../elements/Loader";
 
 function CostumerDetails({ data }) {
   const [form, setForm] = React.useState(null);
   const router = useRouter();
   const lang = useSelector((state) => state.language.lang);
   const { costumerID } = router.query;
+  const [loading, setLoading] = useState(false);
 
   React.useEffect(() => {
     setForm(data);
   }, []);
 
   const deleteHandler = async () => {
+    setLoading(true);
     await axios
       .delete(`/api/costumer/${costumerID}`)
       .then((res) => {
         router.push("/");
       })
-      .catch();
+      .catch()
+      .finally(() => setLoading(false));
   };
 
   if (form)
@@ -65,23 +67,34 @@ function CostumerDetails({ data }) {
             </p>
           </div>
         </Card>
-        <div className={styles.productContainer}>
-          <div className={styles.row}>
+        <Card
+          className={cn(
+            "w-full flex flex-col justify-between items-center p-5 my-5"
+          )}
+        >
+          <div className="grid grid-cols-3 items-center w-full text-center">
             <span>{text.product[lang]}</span>
             <span>{text.price[lang]}</span>
             <span>{text.qty[lang]}</span>
           </div>
           {form.products.map((product, index) => (
-            <div className={styles.row} key={index}>
+            <div
+              className="grid grid-cols-3 items-center w-full text-center"
+              key={index}
+            >
               <span>{product.name}</span>
               <span>{product.price}</span>
               <span>{product.qty}</span>
             </div>
           ))}
-        </div>
+        </Card>
         <div className="flex w-full justify-between items-center">
-          <Button onClick={deleteHandler} variant="destructive">
-            {text.delete[lang]}
+          <Button
+            onClick={deleteHandler}
+            variant="destructive"
+            disabled={loading}
+          >
+            {loading ? <Loader /> : text.delete[lang]}
           </Button>
           <Link
             href={`/edit/${costumerID}`}

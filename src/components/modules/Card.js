@@ -4,9 +4,11 @@ import { cn } from "@/lib/utils";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import text from "../constants/text";
+import { Loader } from "../elements/Loader";
 
 function Card({
   firstName_EN,
@@ -18,15 +20,18 @@ function Card({
   _id,
 }) {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const lang = useSelector((state) => state.language.lang);
   const deleteHandler = async () => {
+    setLoading(true);
     await axios
       .delete(`/api/costumer/${_id}`)
       .then((res) => {
         router.replace("/");
         toast(`${firstName_EN} deleted`);
       })
-      .catch((err) => {});
+      .catch((err) => {})
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -47,8 +52,9 @@ function Card({
           size="large"
           className={cn("px-2")}
           variant="destructive"
+          disabled={loading}
         >
-          {text.delete[lang]}
+          {loading ? <Loader /> : text.delete[lang]}
         </Button>
         <div className="flex flex-col gap-1">
           <Link

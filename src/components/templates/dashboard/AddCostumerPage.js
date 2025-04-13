@@ -6,10 +6,12 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import text from "../../constants/text";
+import { Loader } from "../../elements/Loader";
 import Form from "../../modules/Form";
 
 function AddCostumerPage() {
   const lang = useSelector((state) => state.language.lang);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     firstName_EN: "",
     firstName_FA: "",
@@ -43,14 +45,15 @@ function AddCostumerPage() {
 
   const saveHandler = async () => {
     if (!helpers.isFormEmpty(form)) {
+      setLoading(true);
       axios
         .post("/api/costumer", { data: form })
         .then(() => {
           toast(`${form.firstName_EN} createad`);
           router.push("/");
         })
-        .catch((err) => console.log(err));
-    } else {
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false));
     }
   };
 
@@ -62,7 +65,9 @@ function AddCostumerPage() {
         <Button onClick={cancelHandler} variant="destructive">
           {text.delete[lang]}
         </Button>
-        <Button onClick={saveHandler}>{text.save[lang]}</Button>
+        <Button onClick={saveHandler} disabled={loading}>
+          {loading ? <Loader /> : text.save[lang]}
+        </Button>
       </div>
     </div>
   );
