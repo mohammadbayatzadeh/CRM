@@ -39,24 +39,23 @@ function AddCostumerPage() {
   };
 
   const saveHandler = async () => {
-    console.log(form);
-    // form.firstName_EN &&
-    //   form.firstName_FA &&
-    //   form.lastName_EN &&
-    //   form.lastName_FA &&
-    //   form.city_FA &&
-    //   form.city_EN &&
-    //   form.email &&
-    //   form.birthday &&
-    //   form.products[0] &&
-    //   form.products[0].name &&
-    //   (await axios
-    //     .post("/api/costumer", { data: form })
-    //     .then(() => {
-    //       toast(`${form.firstName_EN} createad`);
-    //       router.push("/");
-    //     })
-    //     .catch());
+    form.firstName_EN &&
+      form.firstName_FA &&
+      form.lastName_EN &&
+      form.lastName_FA &&
+      form.city_FA &&
+      form.city_EN &&
+      form.email &&
+      form.birthday &&
+      form.products[0] &&
+      form.products[0].name &&
+      (await axios
+        .post("/api/costumer", { data: form })
+        .then(() => {
+          toast(`${form.firstName_EN} createad`);
+          router.push("/");
+        })
+        .catch((err) => console.log(err)));
   };
 
   return (

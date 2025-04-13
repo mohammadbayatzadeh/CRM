@@ -30,8 +30,7 @@ const verifyToken = (token) => {
     const result = verify(token, secretKey);
     return result;
   } catch (err) {
-    console.log(err);
     return false;
   }
 };
-export { hashPassword, comparePassword, verifyToken, helpers };
+export { comparePassword, hashPassword, helpers, verifyToken };

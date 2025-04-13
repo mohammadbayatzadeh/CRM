@@ -33,6 +33,7 @@ function EditPage({ data }) {
       lastName_EN: "",
       lastName_FA: "",
       email: "",
+      birthday: "",
       phone: "",
       city: "",
       products: [],

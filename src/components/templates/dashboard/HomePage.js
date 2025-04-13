@@ -1,7 +1,7 @@
-import Card from "../../modules/Card";
+import { Card as CnCard } from "@/components/ui/card";
 import { useSelector } from "react-redux";
 import text from "../../constants/text";
-import { Card as CnCard } from "@/components/ui/card";
+import Card from "../../modules/Card";
 
 function HomePage({ costumers }) {
   const lang = useSelector((state) => state.language.lang);

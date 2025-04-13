@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 
 function FormDate({ form, setForm }) {
   const lang = useSelector((state) => state.language.lang);
-  console.log(lang);
   const changeHandler = (e) => {
     setForm({ ...form, birthday: e });
   };
