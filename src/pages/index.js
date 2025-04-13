@@ -9,6 +9,7 @@ import connectDB from "@/src/utils/connectDB";
 import { verifyToken } from "@/src/utils/functions";
 
 function Home({ costumers }) {
+  console.log(costumers)
   return <HomePage costumers={costumers} />;
 }
 

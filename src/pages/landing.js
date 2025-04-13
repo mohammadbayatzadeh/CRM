@@ -1,10 +1,5 @@
-//functions
-import { verifyToken } from "@/src/utils/functions";
-
-//contants
 import text from "@/src/components/constants/text";
-
-//redux
+import { verifyToken } from "@/src/utils/functions";
 import { useSelector } from "react-redux";
 
 function Home() {
@@ -13,9 +8,7 @@ function Home() {
     <>
       <h2>{text.welcome[lang]}</h2>
       <br />
-      <h3 className="">
-        {text.homePage_text[lang]}
-      </h3>
+      <h3 className="">{text.homePage_text[lang]}</h3>
     </>
   );
 }

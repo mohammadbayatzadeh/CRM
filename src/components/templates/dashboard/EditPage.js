@@ -1,23 +1,15 @@
+import { Button } from "@/components/ui/button";
+import Form from "@/src/components/modules/Form";
+import { helpers } from "@/src/utils/functions";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React from "react";
-
-//comps
-import Form from "@/src/components/modules/Form";
-
-//styles
-import styles from "./EditPage.module.css";
-
-//redux
 import { useSelector } from "react-redux";
-
-//constants
 import text from "../../constants/text";
 
 function EditPage({ data }) {
   const [form, setForm] = React.useState({});
   const lang = useSelector((state) => state.language.lang);
-  console.log(data)
 
   const router = useRouter();
 
@@ -43,26 +35,25 @@ function EditPage({ data }) {
   };
 
   const saveHandler = async () => {
-    console.log(form);
-    await axios
-      .patch(`/api/costumer/${costumerID}`, { data: form })
-      .then(() => {
-        router.push("/");
-      })
-      .catch(() => {});
+    if (!helpers.isFormEmpty(form)) {
+      await axios
+        .patch(`/api/costumer/${costumerID}`, { data: form })
+        .then(() => {
+          router.push("/");
+        })
+        .catch(() => {});
+    }
   };
 
   return (
-    <div className={styles.container}>
-      <h3>{text.edit_page[lang]}</h3>
+    <div className="w-full flex-col flex mb-2">
+      <h1>{text.edit_page[lang]}</h1>
       {form && <Form form={form} setForm={setForm} />}
-      <div className={styles.buttons}>
-        <button onClick={cancelHandler} className={styles.cancel}>
+      <div className="flex w-full justify-between">
+        <Button onClick={cancelHandler} variant="destructive">
           {text.cancel[lang]}
-        </button>
-        <button onClick={saveHandler} className={styles.save}>
-          {text.save[lang]}
-        </button>
+        </Button>
+        <Button onClick={saveHandler}>{text.save[lang]}</Button>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ const text = {
   first_name: { en: "first name", fa: "نام" },
   last_name: { en: "last name", fa: "نام خانوادگی" },
   city: { en: "city", fa: "شهر" },
-  phone: { en: "phone", fa: "تلقن" },
+  phone: { en: "phone", fa: "تلفن" },
   purchased_items: { en: "purchased items", fa: "موارد خریداری شده " },
   item: { en: "item", fa: "آیتم" },
   price: { en: "price", fa: "قیمت" },
